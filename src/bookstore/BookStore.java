@@ -58,18 +58,22 @@ public class BookStore {
                     break;
                 case 2:
 
-                    System.out.println("Enter title: ");          
-                    String title = scanne.nextLine();
+                    System.out.println("Enter title: ");
+                    Scanner s = new Scanner(System.in);
+                    String title = s.nextLine();
+                    
+                    Scanner sc = new Scanner(System.in);
                     System.out.println("Enter author name: ");
-                    String author = scanne.nextLine();
+                    String author = sc.nextLine();
+                    
                     System.out.println("Enter price: ");               
                     Double price = scanne.nextDouble();
                     
                     //1
 
                    System.out.println("Enter your release date: ");
-                   
-                    String d = scanne.nextLine();
+                   Scanner scnn = new Scanner(System.in);
+                    String d = scnn.nextLine();
                      Date date=Date.valueOf(d); 
                     //2
 //                             System.out.println("Saisissez une date (JJ/MM/AAAA) :");

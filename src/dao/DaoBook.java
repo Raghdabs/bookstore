@@ -73,7 +73,7 @@ public class DaoBook {
             String author = rs.getString("author");
             double price = rs.getDouble("price");
             Date rDate = rs.getDate("releaseDate");
-            Book book = new Book( title, author, price,rDate );
+            Book book = new Book( id,title, author, price,rDate );
             ll.add(book);
          
         }
