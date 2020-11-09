@@ -17,14 +17,14 @@ public class Book {
     private String title;
     private String Author;
     private double Price;
-  //  private Date ReleaseDate;
+   private Date ReleaseDate;
 
-    public Book( String title, String Author, double Price) {
+    public Book( String title, String Author, double Price,Date ReleaseDate ) {
 
         this.title = title;
         this.Author = Author;
         this.Price = Price;
-       // this.ReleaseDate = ReleaseDate;
+       this.ReleaseDate = ReleaseDate;
     }
 
     public int getId() {
@@ -59,17 +59,17 @@ public class Book {
         this.Price = Price;
     }
 
-//    public Date getReleaseDate() {
-//        return ReleaseDate;
-//    }
-//
-//    public void setReleaseDate(Date ReleaseDate) {
-//        this.ReleaseDate = ReleaseDate;
-//    }
+   public Date getReleaseDate() {
+        return ReleaseDate;
+    }
+
+    public void setReleaseDate(Date ReleaseDate) {
+        this.ReleaseDate = ReleaseDate;
+    }
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", Author=" + Author + ", Price=" + Price + "'}";
+        return "Book{" + "id=" + id + ", title=" + title + ", Author=" + Author + ", Price=" + Price + "ReleaseDate"+ReleaseDate+"}";
     }
     
 

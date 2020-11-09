@@ -24,29 +24,29 @@ public class DaoBook {
         int id;
         double price;
         String title, author;
-        //Date releaseDate;
+        Date releaseDate;
         try {
             String url = "jdbc:mysql://localhost:3306/bookstore";
             con = DriverManager.getConnection(url, "root", "");
         } catch (SQLException e) {
             System.out.println(e);
         }
-        id = book.getId();
+        
         price = book.getPrice();
         title = book.getTitle();
         author = book.getAuthor();
-        //releaseDate = book.getReleaseDate();
-        String query = "insert into book (title,price,author)values(?,?,?)";
+        releaseDate = book.getReleaseDate();
+        String query = "insert into book (title,price,author,releaseDate)values(?,?,?,?)";
         PreparedStatement preparedStmt = con.prepareStatement(query);
        
         preparedStmt.setString(1, title);
         preparedStmt.setDouble(2, price);
         preparedStmt.setString(3, author);
-       // preparedStmt.setDate(5, releaseDate);
+        preparedStmt.setDate(4, releaseDate);
         int resultupdate = preparedStmt.executeUpdate();
         System.out.println(resultupdate);
         System.out.println("New book is registred !");
-        System.out.println("Title:" + title + "" + "Author:" + author + "Price:" + price + "" );
+        System.out.println("Title:" + title  + "Author:" + author + "Price:" + price + "RelaseDate"+releaseDate );
         con.close();
     }
 
@@ -72,8 +72,8 @@ public class DaoBook {
             String title = rs.getString("title");
             String author = rs.getString("author");
             double price = rs.getDouble("price");
-            //Date rDate = rs.getDate("releaseDate");
-            Book book = new Book( title, author, price );
+            Date rDate = rs.getDate("releaseDate");
+            Book book = new Book( title, author, price,rDate );
             ll.add(book);
          
         }
