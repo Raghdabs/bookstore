@@ -5,14 +5,14 @@
  */
 package bookstore.Models;
 
-import java.util.Date;
-
 /**
  *
- * @author chaym
+ * @author Loukas
  */
-public class Book {
-    String authors[];
-    Date publicationDate;
-    String title;
+public class Utility {
+    public double CalculateTotalPrice(int qte, double prixU){
+    double priceT;
+    priceT=qte*prixU;
+        return priceT;
+    }
 }
