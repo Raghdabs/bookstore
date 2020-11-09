@@ -27,21 +27,19 @@ public class BookStore {
      */
     public static void main(String[] args) throws ParseException, SQLException {
         //*****************************STEP ONE***********************************
-//        int qt;
-//        double up, priceT;
-//        Utility U = new Utility();
-//        System.out.println("Enter quantity: ");
-//        Scanner scanner = new Scanner(System.in);
-//        qt = scanner.nextInt();
-//        System.out.println("Enter Unit price: ");
-//        Scanner scanne = new Scanner(System.in);
-//        up = scanne.nextDouble();
-//        priceT = U.CalculateTotalPrice(qt, up);
-//        System.out.println("Total price is equal to "+""+priceT);
+          int qt;
+         double up, priceT;
+         Utility U = new Utility();
+        System.out.println("Enter quantity: ");
+        Scanner scanne = new Scanner(System.in);
+        qt = scanne.nextInt();
+        System.out.println("Enter Unit price: ");
+        up = scanne.nextDouble();
+        priceT = U.CalculateTotalPrice(qt, up);
+        System.out.println("Total price is equal to "+""+priceT);
 
         //   *****************************STEP two***********************************
         int exit = 0, choice;
-        Scanner scanner = new Scanner(System.in);
 
         while (exit != 1) {
 
@@ -49,7 +47,7 @@ public class BookStore {
             System.out.println("1 : Display Book List \n");
             System.out.println("2 : Create New Book \n");
             System.out.println("3 : Exit.\n");
-            choice = scanner.nextInt();
+            choice = scanne.nextInt();
             switch (choice) {
                 case 1:
                     DaoBook db = new DaoBook();
@@ -60,26 +58,23 @@ public class BookStore {
                     break;
                 case 2:
 
-                    System.out.println("Enter title: ");
-                    Scanner scann = new Scanner(System.in);
-                    String title = scann.nextLine();
+                    System.out.println("Enter title: ");          
+                    String title = scanne.nextLine();
                     System.out.println("Enter author name: ");
-                    Scanner scanne = new Scanner(System.in);
                     String author = scanne.nextLine();
-                    System.out.println("Enter price: ");
-                    Scanner scan = new Scanner(System.in);
-                    Double price = scan.nextDouble();
+                    System.out.println("Enter price: ");               
+                    Double price = scanne.nextDouble();
                     
                     //1
 
                    System.out.println("Enter your release date: ");
-                   Scanner scae = new Scanner(System.in);
-                    String d = scae.nextLine();
+                   
+                    String d = scanne.nextLine();
                      Date date=Date.valueOf(d); 
                     //2
 //                             System.out.println("Saisissez une date (JJ/MM/AAAA) :");
-//                    Scanner sc = new Scanner(System.in);
-//                    String str = sc.nextLine();
+//                  
+//                    String str = scanne.nextLine();
 //                    String sDate = "";
 //                    if (str.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")) {
 //                        SimpleDateFormat f = new SimpleDateFormat("MM-dd-yyyy");
