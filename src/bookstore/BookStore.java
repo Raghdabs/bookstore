@@ -31,7 +31,7 @@ public class BookStore {
          double up, priceT;
          Utility U = new Utility();
         System.out.println("Enter quantity: ");
-        Scanner scanne = new Scanner(System.in);
+        
         qt = scanne.nextInt();
         System.out.println("Enter Unit price: ");
         up = scanne.nextDouble();
@@ -42,7 +42,7 @@ public class BookStore {
         int exit = 0, choice;
 
         while (exit != 1) {
-
+            Scanner scanne = new Scanner(System.in);
             System.out.println("veillez choisir une commande a faire ...\n");
             System.out.println("1 : Display Book List \n");
             System.out.println("2 : Create New Book \n");
