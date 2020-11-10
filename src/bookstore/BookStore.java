@@ -26,7 +26,7 @@ public class BookStore {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ParseException, SQLException {
-        //*****************************STEP ONE***********************************
+        /*****************************STEP ONE***********************************
           int qt;
          double up, priceT;
          Utility U = new Utility();
@@ -38,7 +38,7 @@ public class BookStore {
         priceT = U.CalculateTotalPrice(qt, up);
         System.out.println("Total price is equal to "+""+priceT);
 
-        //   *****************************STEP two***********************************
+          *****************************STEP two***********************************/
         int exit = 0, choice;
 
         while (exit != 1) {
