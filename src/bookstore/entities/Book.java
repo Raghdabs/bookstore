@@ -19,6 +19,9 @@ public class Book {
     private double Price;
    private Date ReleaseDate;
 
+    public Book() {
+    }
+
     public Book( String title, String Author, double Price,Date ReleaseDate ) {
 
         this.title = title;

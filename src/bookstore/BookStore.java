@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -51,7 +52,7 @@ public class BookStore {
             switch (choice) {
                 case 1:
                     DaoBook db = new DaoBook();
-                    List L = new LinkedList();
+                  ArrayList<Book> L = new ArrayList<Book>();
                     L = db.listBook();
                     System.out.println(L);
 
@@ -95,6 +96,14 @@ public class BookStore {
                 case 3:
                     exit = 1;
                     System.out.println("Programme shutting down ...\n");
+                    break;
+                case 4:
+                    System.out.println("Enter Id: ");
+                    Scanner sa = new Scanner(System.in);
+                    int idd = sa.nextInt();
+                    db = new DaoBook();
+                    Book bk=db.listBookId(idd);
+                    System.out.println(bk);
                     break;
                 default:
                     System.out.println("ERR");
