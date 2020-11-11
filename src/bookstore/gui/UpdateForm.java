@@ -30,15 +30,16 @@ public class UpdateForm extends javax.swing.JFrame {
 
     /**
      * Creates new form Update
+     * @throws java.text.ParseException
      */
     public UpdateForm() throws ParseException {
         initComponents();       
-        
-        //mahbetsh temshy 
+     
+//        //mahbetsh temshy 
 //        Image getAbsolutePath = null;
 //        String imgUrl = "logo.png";
 //        ImageIcon icone = new ImageIcon(imgUrl);
-//        Image image = icone.getImage().getScaledInstance(jLabe.getWidth(), jLabe.getHeight(), Image.SCALE_SMOOTH);
+//        Image images = icone.getImage().getScaledInstance(jLabe.getWidth(), jLabe.getHeight(), Image.SCALE_SMOOTH);
 //        jLabe.setIcon(icone);
 
         this.setLocationRelativeTo(null);
