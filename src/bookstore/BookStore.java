@@ -5,16 +5,12 @@
  */
 package bookstore;
 
-import bookstore.Models.Utility;
 import bookstore.entities.Book;
 import dao.DaoBook;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -47,7 +43,8 @@ public class BookStore {
             System.out.println("veillez choisir une commande a faire ...\n");
             System.out.println("1 : Display Book List \n");
             System.out.println("2 : Create New Book \n");
-            System.out.println("3 : Exit.\n");
+            System.out.println("3 : Update a Book \n");
+            System.out.println("4 : Exit.\n");
             choice = scanne.nextInt();
             switch (choice) {
                 case 1:
@@ -93,11 +90,11 @@ public class BookStore {
                     db.AddBook(b);
 
                     break;
-                case 3:
+                case 4:
                     exit = 1;
                     System.out.println("Programme shutting down ...\n");
                     break;
-                case 4:
+                case 3:
                     System.out.println("Enter Id: ");
                     Scanner sa = new Scanner(System.in);
                     int idd = sa.nextInt();

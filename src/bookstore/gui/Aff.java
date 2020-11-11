@@ -7,17 +7,11 @@ package bookstore.gui;
 
 import bookstore.entities.Book;
 import dao.DaoBook;
-import java.awt.BorderLayout;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -186,10 +180,8 @@ public class Aff extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Aff().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Aff().setVisible(true);
         });
 
     }
