@@ -15,6 +15,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,13 +27,13 @@ public class UpdateForm extends javax.swing.JFrame {
     /**
      * Creates new form Update
      */
-    public UpdateForm() {
+    public UpdateForm() throws ParseException {
         initComponents();
         this.setLocationRelativeTo(null);
        DaoBook db=new DaoBook();
         Book b=new Book();
         try {
-            db.listBookId(sel);
+            b=db.listBookId(sel);
         } catch (SQLException ex) {
             Logger.getLogger(UpdateForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -39,15 +41,11 @@ public class UpdateForm extends javax.swing.JFrame {
         String s=String.valueOf(b.getPrice());
         t2.setText(s);
         t3.setText(b.getAuthor());
-        Date d =b.getReleaseDate();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
-        String strDate = dateFormat.format(d); 
-        try {
-            java.util.Date da=new SimpleDateFormat("dd/MM/yyyy").parse(strDate);
+        Date d =b.getReleaseDate(); 
+        String strDate = d.toString();
+        java.util.Date da=new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
             t4.setDate(da);
-        } catch (ParseException ex) {
-            Logger.getLogger(UpdateForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
       
     }
 
@@ -237,6 +235,7 @@ public class UpdateForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id =sel;
         String title = t1.getText();
         String txt = t2.getText();
         double price = Double.parseDouble(txt);
@@ -246,11 +245,11 @@ public class UpdateForm extends javax.swing.JFrame {
         Date date=Date.valueOf(bdate);
         DaoBook db = new DaoBook();
         try {
-            db.UpdateB(sel, title, price, author,date);
+            db.UpdateB(id, title, price, author,date);
         } catch (SQLException ex) {
             Logger.getLogger(UpdateForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        JOptionPane.showMessageDialog(null, "Book Updated With Success !");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -291,7 +290,11 @@ public class UpdateForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new UpdateForm().setVisible(true);
+            try {
+                new UpdateForm().setVisible(true);
+            } catch (ParseException ex) {
+                Logger.getLogger(UpdateForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 
