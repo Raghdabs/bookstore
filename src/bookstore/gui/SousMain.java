@@ -134,7 +134,7 @@ static int sel;
 
             },
             new String [] {
-                "ID", "Title ", "Price", "Author", "ReleaseDate"
+                "ID", "Title ", "Price", "Author", "ReleaseDate", "Path"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -181,20 +181,17 @@ static int sel;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jButton2)
-                        .addGap(53, 53, 53)
+                        .addGap(150, 150, 150)
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                        .addComponent(jButton4))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,13 +244,14 @@ static int sel;
 
         }
         }
-        Object[] row = new Object[5];
+        Object[] row = new Object[6];
         for (int i = 0; i < L.size(); i++) {
             row[0] = L.get(i).getId();
             row[1] = L.get(i).getTitle();
             row[2] = L.get(i).getPrice();
             row[3] = L.get(i).getAuthor();
             row[4] = L.get(i).getReleaseDate();
+            row[5] = L.get(i).getPath();
             model.addRow(row);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

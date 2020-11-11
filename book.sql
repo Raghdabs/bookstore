@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 09 nov. 2020 à 21:20
+-- Généré le : mer. 11 nov. 2020 à 16:56
 -- Version du serveur :  10.4.13-MariaDB
 -- Version de PHP : 7.4.7
 
@@ -32,16 +32,17 @@ CREATE TABLE `book` (
   `title` varchar(20) NOT NULL,
   `price` double NOT NULL,
   `author` varchar(20) NOT NULL,
-  `releaseDate` date DEFAULT NULL
+  `releaseDate` date DEFAULT NULL,
+  `path` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `book`
 --
 
-INSERT INTO `book` (`id`, `title`, `price`, `author`, `releaseDate`) VALUES
-(1, 'title', 22, 'name', NULL),
-(2, 'T2', 3000, 'N2', '2015-03-31');
+INSERT INTO `book` (`id`, `title`, `price`, `author`, `releaseDate`, `path`) VALUES
+(22, 'title', 300.1, 'name', '2020-11-12', 'C:\\Users\\Loukas\\Pictures\\Sans titre.png'),
+(24, 'azezae', 3000, 'ezaaze', '2020-11-20', 'C:\\Users\\Loukas\\Desktop\\images (1).png');
 
 --
 -- Index pour les tables déchargées
@@ -61,7 +62,7 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT pour la table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

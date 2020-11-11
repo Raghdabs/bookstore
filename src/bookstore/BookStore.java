@@ -85,7 +85,7 @@ public class BookStore {
 //                        System.out.println("Erreur format");
 //                    }
 //                    
-                    Book b = new Book(title, author, price,date);
+                    Book b = new Book(title, author, price,date,null);
                     db = new DaoBook();
                     db.AddBook(b);
 

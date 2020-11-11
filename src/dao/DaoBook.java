@@ -9,8 +9,7 @@ import bookstore.entities.Book;
 import java.sql.*;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+
 
 /**
  *
@@ -24,7 +23,7 @@ public class DaoBook {
         Connection con = null;
         int id;
         double price;
-        String title, author;
+        String title, author,path;
         Date releaseDate;
         try {
             String url = "jdbc:mysql://localhost:3306/bookstore";
@@ -37,17 +36,18 @@ public class DaoBook {
         title = book.getTitle();
         author = book.getAuthor();
         releaseDate = book.getReleaseDate();
-        String query = "insert into book (title,price,author,releaseDate)values(?,?,?,?)";
+        path=book.getPath();
+        String query = "insert into book (title,price,author,releaseDate,path)values(?,?,?,?,?)";
         PreparedStatement preparedStmt = con.prepareStatement(query);
-
         preparedStmt.setString(1, title);
         preparedStmt.setDouble(2, price);
         preparedStmt.setString(3, author);
         preparedStmt.setDate(4, releaseDate);
+        preparedStmt.setString(5, path);
         int resultupdate = preparedStmt.executeUpdate();
         System.out.println(resultupdate);
         System.out.println("New book is registred !");
-        System.out.println("Title:" + title + "Author:" + author + "Price:" + price + "RelaseDate" + releaseDate);
+        System.out.println("Title:" + title + "Author:" + author + "Price:" + price + "RelaseDate" + releaseDate+"Path"+path);
         con.close();
     }
 
@@ -73,7 +73,8 @@ public class DaoBook {
             String author = rs.getString("author");
             double price = rs.getDouble("price");
             Date rDate = rs.getDate("releaseDate");
-            Book book = new Book(id, title, author, price, rDate);
+            String path=rs.getString("path");
+            Book book = new Book(id, title, author, price, rDate, path);
             ll.add(book);
 
         }
@@ -105,11 +106,13 @@ public class DaoBook {
             String author = rs.getString("author");
             double price = rs.getDouble("price");
             Date rDate = rs.getDate("releaseDate");
+            String path=rs.getString("path");
             book.setId(id);
             book.setTitle(title);
             book.setAuthor(author);
             book.setPrice(price);
             book.setReleaseDate(rDate);
+            book.setPath(path);
 
         }
         con.close();
@@ -117,7 +120,7 @@ public class DaoBook {
         return book;
     }
 
-    public void UpdateB(int id, String title, double price, String author, Date date) throws SQLException {
+    public void UpdateB(int id, String title, double price, String author, Date date,String path) throws SQLException {
         Connection con = null;
         try {
 
@@ -126,13 +129,14 @@ public class DaoBook {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        String query = "UPDATE book SET title= ?,price= ?,author= ?,releaseDate=? WHERE id = ? ";
+        String query = "UPDATE book SET title= ?,price= ?,author= ?,releaseDate=?,path=? WHERE id = ? ";
         PreparedStatement preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1, title);
         preparedStmt.setDouble(2, price);
         preparedStmt.setString(3, author);
         preparedStmt.setDate(4, date);
-        preparedStmt.setInt(5, id);
+        preparedStmt.setString(5, path);
+        preparedStmt.setInt(6, id);
         int resultupdate = preparedStmt.executeUpdate();
         System.out.println(resultupdate);
     }

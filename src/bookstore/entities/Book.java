@@ -12,30 +12,41 @@ import java.sql.Date;
  * @author Loukas
  */
 public class Book {
-    
+
     private int id;
     private String title;
     private String Author;
     private double Price;
-   private Date ReleaseDate;
+    private Date ReleaseDate;
+    private String path;
 
     public Book() {
     }
 
-    public Book( String title, String Author, double Price,Date ReleaseDate ) {
+    public Book(String title, String Author, double Price, Date ReleaseDate, String path) {
 
         this.title = title;
         this.Author = Author;
         this.Price = Price;
-       this.ReleaseDate = ReleaseDate;
+        this.ReleaseDate = ReleaseDate;
+        this.path = path;
     }
 
-    public Book(int id, String title, String Author, double Price, Date ReleaseDate) {
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Book(int id, String title, String Author, double Price, Date ReleaseDate, String path) {
         this.id = id;
         this.title = title;
         this.Author = Author;
         this.Price = Price;
         this.ReleaseDate = ReleaseDate;
+        this.path = path;
     }
 
     public int getId() {
@@ -70,7 +81,7 @@ public class Book {
         this.Price = Price;
     }
 
-   public Date getReleaseDate() {
+    public Date getReleaseDate() {
         return ReleaseDate;
     }
 
@@ -80,8 +91,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", Author=" + Author + ", Price=" + Price + "ReleaseDate"+ReleaseDate+"}";
+        return "Book{" + "id=" + id + ", title=" + title + ", Author=" + Author + ", Price=" + Price + "ReleaseDate" + ReleaseDate + "}";
     }
-    
 
 }
