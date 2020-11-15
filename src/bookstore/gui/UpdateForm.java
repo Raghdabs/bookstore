@@ -8,11 +8,11 @@ package bookstore.gui;
 import bookstore.entities.Book;
 import static bookstore.gui.SousMain.sel;
 import dao.DaoBook;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -36,7 +36,6 @@ public class UpdateForm extends javax.swing.JFrame {
     public UpdateForm() throws ParseException {
         initComponents();
 
-        Image getAbsolutePath = null;
         String imgUrl = "logo.png";
         ImageIcon icone = new ImageIcon(imgUrl);
 
@@ -172,9 +171,38 @@ public class UpdateForm extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Release Date :");
 
-        t1.setText("jTextField1");
+        t1.setForeground(new java.awt.Color(204, 204, 204));
+        t1.setText("Enter The Title");
+        t1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                t1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                t1FocusLost(evt);
+            }
+        });
 
-        t3.setText("jTextField3");
+        t2.setForeground(new java.awt.Color(204, 204, 204));
+        t2.setText("Enter The Price");
+        t2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                t2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                t2FocusLost(evt);
+            }
+        });
+
+        t3.setForeground(new java.awt.Color(204, 204, 204));
+        t3.setText("Enter Author Name");
+        t3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                t3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                t3FocusLost(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(123, 239, 178));
         jButton1.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
@@ -191,7 +219,8 @@ public class UpdateForm extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Choose Book Cover :");
 
-        j4.setText("jTextField4");
+        j4.setForeground(new java.awt.Color(204, 204, 204));
+        j4.setText("Upload Book Cover");
 
         jButton3.setText("Browse");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -300,6 +329,7 @@ public class UpdateForm extends javax.swing.JFrame {
             Logger.getLogger(UpdateForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(null, "Book Updated With Success !");
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -316,11 +346,52 @@ public class UpdateForm extends javax.swing.JFrame {
         File f = chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
         j4.setText(filename);
-        Image getAbsolutePath = null;
         ImageIcon icon = new ImageIcon(filename);
         Image image = icon.getImage().getScaledInstance(ico2.getWidth(), ico2.getHeight(), Image.SCALE_SMOOTH);
         ico2.setIcon(icon);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void t1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t1FocusGained
+        if(t1.getText().equals("Enter The Title")){
+            t1.setText("");
+            t1.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_t1FocusGained
+
+    private void t1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t1FocusLost
+        if(t1.getText().equals("")){
+            t1.setText("Enter The Title");
+            t1.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_t1FocusLost
+
+    private void t2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t2FocusGained
+        if(t2.getText().equals("Enter The Price")){
+            t2.setText("");
+            t2.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_t2FocusGained
+
+    private void t2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t2FocusLost
+        if(t2.getText().equals("")){
+            t2.setText("Enter The Price");
+            t2.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_t2FocusLost
+
+    private void t3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t3FocusGained
+        if(t3.getText().equals("Enter Author Name")){
+            t3.setText("");
+            t3.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_t3FocusGained
+
+    private void t3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t3FocusLost
+        if(t3.getText().equals("")){
+            t3.setText("Enter Author Name");
+            t3.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_t3FocusLost
 
     /**
      * @param args the command line arguments

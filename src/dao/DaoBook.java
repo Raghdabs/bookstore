@@ -10,35 +10,33 @@ import java.sql.*;
 import java.sql.Date;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author RBS
  */
 public class DaoBook {
 
-    // pour ajouter un nouveau book
-    public void AddBook(Book book) throws SQLException {
-        //cnx to database
-        Connection con = null;
-        int id;
-        double price;
-        String title, author,path;
-        Date releaseDate;
-        try {
-            String url = "jdbc:mysql://localhost:3306/bookstore";
-            con = DriverManager.getConnection(url, "root", "");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+    Connection con = null;
+    ConnectionDB c = new ConnectionDB();
 
+    // ADD NEW BOOK FUNCTION
+    public void AddBook(Book book) throws SQLException {
+        //Declaration
+        PreparedStatement preparedStmt;
+        double price;
+        String title, author, path;
+        Date releaseDate;
+        //Start Connection to DataBase
+        con = c.BookStoreDB();
+        //Initialisation
         price = book.getPrice();
         title = book.getTitle();
         author = book.getAuthor();
         releaseDate = book.getReleaseDate();
-        path=book.getPath();
+        path = book.getPath();
+        //Add New Book Query
         String query = "insert into book (title,price,author,releaseDate,path)values(?,?,?,?,?)";
-        PreparedStatement preparedStmt = con.prepareStatement(query);
+        preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1, title);
         preparedStmt.setDouble(2, price);
         preparedStmt.setString(3, author);
@@ -47,90 +45,81 @@ public class DaoBook {
         int resultupdate = preparedStmt.executeUpdate();
         System.out.println(resultupdate);
         System.out.println("New book is registred !");
-        System.out.println("Title:" + title + "Author:" + author + "Price:" + price + "RelaseDate" + releaseDate+"Path"+path);
+        System.out.println("Title:" + title + "Author:" + author + "Price:" + price + "RelaseDate" + releaseDate + "Path" + path);
+        //Close Connection to DataBase
         con.close();
     }
 
-    //lister les book
+    //DISPLAY BOOK LIST FUNCTION
     public ArrayList<Book> listBook() throws SQLException {
+        //Declaration
         Statement stmt;
-        Connection con = null;
         ArrayList<Book> ll = new ArrayList<Book>();
-        try {
-
-            String url = "jdbc:mysql://localhost:3306/bookstore";
-            con = DriverManager.getConnection(url, "root", "");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        //Start Connection to DataBase
+        con = c.BookStoreDB();
+        //Select ALL Query
         String query = "select * from book";
         stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-
         while (rs.next()) {
             int id = rs.getInt("id");
             String title = rs.getString("title");
             String author = rs.getString("author");
             double price = rs.getDouble("price");
             Date rDate = rs.getDate("releaseDate");
-            String path=rs.getString("path");
+            String path = rs.getString("path");
             Book book = new Book(id, title, author, price, rDate, path);
             ll.add(book);
-
         }
+        //Close Connection to DataBase
         con.close();
+        //return List of Books
         return ll;
-
     }
 
+    //DISPLAY BOOK BY ID FUNCTION
     public Book listBookId(int id) throws SQLException {
-        Statement stmt;
-        Connection con = null;
+        //Declaration
+        String title,author,path;
+        double price;
+        Date rDate;
+        PreparedStatement preparedStmt;
         Book book = new Book();
-        ArrayList<Book> ll = new ArrayList<Book>();
-        try {
-
-            String url = "jdbc:mysql://localhost:3306/bookstore";
-            con = DriverManager.getConnection(url, "root", "");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        //Start Connection to DataBase
+        con = c.BookStoreDB();
+        //Select By ID Query
         String query = "select * from book where id = ? ";
-        PreparedStatement preparedStmt = con.prepareStatement(query);
+        preparedStmt = con.prepareStatement(query);
         preparedStmt.setInt(1, id);
         ResultSet rs = preparedStmt.executeQuery();
-
         while (rs.next()) {
-
-            String title = rs.getString("title");
-            String author = rs.getString("author");
-            double price = rs.getDouble("price");
-            Date rDate = rs.getDate("releaseDate");
-            String path=rs.getString("path");
+            title = rs.getString("title");
+            author = rs.getString("author");
+            price = rs.getDouble("price");
+            rDate = rs.getDate("releaseDate");
+            path = rs.getString("path");
             book.setId(id);
             book.setTitle(title);
             book.setAuthor(author);
             book.setPrice(price);
             book.setReleaseDate(rDate);
             book.setPath(path);
-
         }
+        //Close Connection to DataBase
         con.close();
-
+        //return Desired Book
         return book;
     }
 
-    public void UpdateB(int id, String title, double price, String author, Date date,String path) throws SQLException {
-        Connection con = null;
-        try {
-
-            String url = "jdbc:mysql://localhost:3306/bookstore";
-            con = DriverManager.getConnection(url, "root", "");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+    //UPDATE BOOK FUNCTION
+    public void UpdateB(int id, String title, double price, String author, Date date, String path) throws SQLException {
+        //Declaration
+        PreparedStatement preparedStmt;
+        //Start Connection to DataBase
+        con = c.BookStoreDB();
+        //Update Query
         String query = "UPDATE book SET title= ?,price= ?,author= ?,releaseDate=?,path=? WHERE id = ? ";
-        PreparedStatement preparedStmt = con.prepareStatement(query);
+        preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1, title);
         preparedStmt.setDouble(2, price);
         preparedStmt.setString(3, author);
@@ -139,20 +128,23 @@ public class DaoBook {
         preparedStmt.setInt(6, id);
         int resultupdate = preparedStmt.executeUpdate();
         System.out.println(resultupdate);
+        //Close Connection to DataBase
+        con.close();
     }
-    public void deleteB(int id) throws SQLException{
-    Connection con = null;
-        try {
 
-            String url = "jdbc:mysql://localhost:3306/bookstore";
-            con = DriverManager.getConnection(url, "root", "");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+    //DELETE BOOK FUNCTION
+    public void deleteB(int id) throws SQLException {
+        //Declaration
+        PreparedStatement preparedStmt;
+        //Start Connection to DataBase
+        con = c.BookStoreDB();
+        //Delete Query
         String query = "delete from book where id = ? ";
-        PreparedStatement preparedStmt = con.prepareStatement(query);
+        preparedStmt = con.prepareStatement(query);
         preparedStmt.setInt(1, id);
         int resultupdate = preparedStmt.executeUpdate();
         System.out.println(resultupdate);
+        //Close Connection to DataBase
+        con.close();
     }
 }
