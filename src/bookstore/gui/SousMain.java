@@ -22,7 +22,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author RBS
  */
-public class SousMain extends javax.swing.JFrame {
+public final class SousMain extends javax.swing.JFrame {
+     
 
     static int sel;
 
@@ -35,8 +36,37 @@ public class SousMain extends javax.swing.JFrame {
         ImageIcon icone = new ImageIcon(imgUrl);
         Image image = icone.getImage().getScaledInstance(jLabel2.getWidth(), jLabel2.getHeight(), Image.SCALE_SMOOTH);
         jLabel2.setIcon(icone);
+        Displaydata();
         this.setLocationRelativeTo(null);
+   
 
+    }
+   public void Displaydata(){
+           DaoBook db = new DaoBook();
+        ArrayList<Book> L = new ArrayList<>();
+        try {
+            L = db.listBook();
+        } catch (SQLException ex) {
+            Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        if (validCheck() == true) {
+            while (model.getRowCount() > 0) {
+                model.removeRow(0);
+
+            }
+        }
+        Object[] row = new Object[6];
+        for (int i = 0; i < L.size(); i++) {
+            row[0] = L.get(i).getId();
+            row[1] = L.get(i).getTitle();
+            row[2] = L.get(i).getPrice();
+            row[3] = L.get(i).getAuthor();
+            row[4] = L.get(i).getReleaseDate();
+            row[5] = L.get(i).getPath();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -103,7 +133,7 @@ public class SousMain extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jButton1.setText("Display List Book");
+        jButton1.setText("Refresh");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -258,31 +288,7 @@ public class SousMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DaoBook db = new DaoBook();
-        ArrayList<Book> L = new ArrayList<>();
-        try {
-            L = db.listBook();
-        } catch (SQLException ex) {
-            Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        if (validCheck() == true) {
-            while (model.getRowCount() > 0) {
-                model.removeRow(0);
-
-            }
-        }
-        Object[] row = new Object[6];
-        for (int i = 0; i < L.size(); i++) {
-            row[0] = L.get(i).getId();
-            row[1] = L.get(i).getTitle();
-            row[2] = L.get(i).getPrice();
-            row[3] = L.get(i).getAuthor();
-            row[4] = L.get(i).getReleaseDate();
-            row[5] = L.get(i).getPath();
-            model.addRow(row);
-        }
+Displaydata(); 
     }//GEN-LAST:event_jButton1ActionPerformed
     public int selectRow() {
         int selected = jTable1.getSelectedRow();
@@ -303,8 +309,9 @@ public class SousMain extends javax.swing.JFrame {
             Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        model.removeRow(jTable1.getSelectedRow());
+//        model.removeRow(jTable1.getSelectedRow());
         JOptionPane.showMessageDialog(null, "Book Deleted With Success !");
+        Displaydata();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
