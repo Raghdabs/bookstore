@@ -8,8 +8,10 @@ package bookstore.gui;
 import bookstore.entities.Book;
 import dao.DaoBook;
 import java.awt.Image;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -323,18 +325,39 @@ Displaydata();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        sel = selectRow();
-        UpdateForm uod = null;
         try {
+            sel = selectRow();
+            int selectedRow=jTable1.getSelectedRow();
+            java.sql.Date date = null;
+            DaoBook db =new DaoBook();
+            /*UpdateForm uod = null;
+            try {
             uod = new UpdateForm();
-        } catch (ParseException ex) {
+            } catch (ParseException ex) {
+            Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            uod.setVisible(true);
+            uod.pack();
+            uod.setLocationRelativeTo(null);
+            uod.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);*/
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            String title=model.getValueAt(selectedRow, 1).toString();
+            String p=model.getValueAt(selectedRow, 2).toString();
+            double price=Double.valueOf(p);
+            String author=model.getValueAt(selectedRow, 3).toString();
+            String d=model.getValueAt(selectedRow, 4).toString();
+            System.out.print(d);
+            date = Date.valueOf(d);
+            
+            String path=model.getValueAt(selectedRow, 5).toString();
+            
+            db.UpdateB(sel, title, price, author, date, path);
+        } catch (SQLException ex) {
             Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        uod.setVisible(true);
-        uod.pack();
-        uod.setLocationRelativeTo(null);
-        uod.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+       Displaydata();
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
