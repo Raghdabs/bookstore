@@ -270,7 +270,7 @@ public class Main extends javax.swing.JFrame {
             
             if(rs.next())
             {
-                    SousMain mf = new SousMain();
+                    Menu mf = new Menu();
                     mf.setVisible(true);
                     mf.pack();
                     mf.setLocationRelativeTo(null);
