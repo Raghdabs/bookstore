@@ -99,6 +99,34 @@ public class RegUser extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Register User");
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1))
+                .addGap(19, 19, 19))
+        );
+
         jPanel1.setBackground(new java.awt.Color(34, 49, 63));
 
         T1.setForeground(new java.awt.Color(204, 204, 204));
@@ -254,7 +282,7 @@ public class RegUser extends javax.swing.JFrame {
                         .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,43 +329,7 @@ public class RegUser extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
-                        .addGap(19, 19, 19)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -345,10 +337,14 @@ public class RegUser extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 556, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -362,10 +358,6 @@ public class RegUser extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_B2ActionPerformed
-
     @SuppressWarnings("StringEquality")
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
         String FName = T1.getText();
@@ -376,12 +368,12 @@ public class RegUser extends javax.swing.JFrame {
         String Adress = F1.getText();
         String bdate = null;
         DaoUser db = new DaoUser();
-                
+
         if(FName.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Enter First Name !");
         }
-        
+
         else if(LName.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Enter Last Name !");
@@ -399,7 +391,7 @@ public class RegUser extends javax.swing.JFrame {
             {
                 SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
                 bdate = dateformat.format(D1.getDate());
-                
+
             }
             else if(!P1.equals(P2))
             {
@@ -409,73 +401,33 @@ public class RegUser extends javax.swing.JFrame {
             Logger.getLogger(RegUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         Date date=Date.valueOf(bdate);
-        
+
         User b = new User(FName, LName, UName,date,Adress);
-                    
-       
+
         try {
             db.AddUser(b);
         } catch (SQLException ex) {
             Logger.getLogger(RegUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
         JOptionPane.showMessageDialog(null, "New User Registred with success !");
         this.dispose();
     }//GEN-LAST:event_B1ActionPerformed
 
-    private void T1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_T1ActionPerformed
-
-    private void T3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_T3ActionPerformed
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_B2ActionPerformed
 
     private void F1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_F1ActionPerformed
 
-    private void T1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T1FocusGained
-if(T1.getText().equals("Enter First Name")){
-            T1.setText("");
-            T1.setForeground(new Color(155,155,155));
+    private void F1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_F1FocusLost
+        if(F1.getText().equals("")){
+            F1.setText("Enter User Adress");
+            F1.setForeground(new Color(155,155,155));
         }
-    }//GEN-LAST:event_T1FocusGained
-
-    private void T1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T1FocusLost
-         if(T1.getText().equals("")){
-            T1.setText("Enter First Name");
-            T1.setForeground(new Color(155,155,155));
-    }                                     
-    }//GEN-LAST:event_T1FocusLost
-
-    private void T2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T2FocusGained
-        if(T2.getText().equals("Enter Last Name")){
-            T2.setText("");
-            T2.setForeground(new Color(155,155,155));
-        }
-    }//GEN-LAST:event_T2FocusGained
-
-    private void T2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T2FocusLost
-       if(T2.getText().equals("")){
-            T2.setText("Enter Last Name");
-            T2.setForeground(new Color(155,155,155));
-    }     
-    }//GEN-LAST:event_T2FocusLost
-
-    private void T3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T3FocusGained
-        if(T3.getText().equals("Enter User Name")){
-            T3.setText("");
-            T3.setForeground(new Color(155,155,155));
-        }
-    }//GEN-LAST:event_T3FocusGained
-
-    private void T3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T3FocusLost
-        if(T3.getText().equals("")){
-            T3.setText("Enter User Name");
-            T3.setForeground(new Color(155,155,155));
-    }     
-    }//GEN-LAST:event_T3FocusLost
+    }//GEN-LAST:event_F1FocusLost
 
     private void F1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_F1FocusGained
         if(F1.getText().equals("Enter User Adress")){
@@ -484,12 +436,55 @@ if(T1.getText().equals("Enter First Name")){
         }
     }//GEN-LAST:event_F1FocusGained
 
-    private void F1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_F1FocusLost
-        if(F1.getText().equals("")){
-            F1.setText("Enter User Adress");
-            F1.setForeground(new Color(155,155,155));
-    }     
-    }//GEN-LAST:event_F1FocusLost
+    private void T3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_T3ActionPerformed
+
+    private void T3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T3FocusLost
+        if(T3.getText().equals("")){
+            T3.setText("Enter User Name");
+            T3.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_T3FocusLost
+
+    private void T3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T3FocusGained
+        if(T3.getText().equals("Enter User Name")){
+            T3.setText("");
+            T3.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_T3FocusGained
+
+    private void T2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T2FocusLost
+        if(T2.getText().equals("")){
+            T2.setText("Enter Last Name");
+            T2.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_T2FocusLost
+
+    private void T2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T2FocusGained
+        if(T2.getText().equals("Enter Last Name")){
+            T2.setText("");
+            T2.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_T2FocusGained
+
+    private void T1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_T1ActionPerformed
+
+    private void T1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T1FocusLost
+        if(T1.getText().equals("")){
+            T1.setText("Enter First Name");
+            T1.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_T1FocusLost
+
+    private void T1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T1FocusGained
+        if(T1.getText().equals("Enter First Name")){
+            T1.setText("");
+            T1.setForeground(new Color(155,155,155));
+        }
+    }//GEN-LAST:event_T1FocusGained
 
     /**
      * @param args the command line arguments
