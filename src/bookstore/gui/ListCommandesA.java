@@ -248,7 +248,7 @@ public void Displaydata(){
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int selRow =jTable1.getSelectedRow();
+       int selRow =jTable1.getSelectedRow();
         DaoCommande dc= new DaoCommande();
         ArrayList<Commande> Li = new ArrayList<>();
         try {

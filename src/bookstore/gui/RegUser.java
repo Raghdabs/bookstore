@@ -7,6 +7,8 @@ package bookstore.gui;
 
 
 import bookstore.entities.User;
+import static bookstore.gui.Main.admin;
+import static bookstore.gui.Main.client;
 import dao.DaoUser;
 import java.awt.Color;
 import java.awt.Image;
@@ -229,7 +231,7 @@ public class RegUser extends javax.swing.JFrame {
         B1.setBackground(new java.awt.Color(0, 204, 204));
         B1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         B1.setForeground(new java.awt.Color(255, 255, 255));
-        B1.setText("Login");
+        B1.setText("Register");
         B1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B1ActionPerformed(evt);
@@ -368,7 +370,8 @@ public class RegUser extends javax.swing.JFrame {
         String Adress = F1.getText();
         String bdate = null;
         DaoUser db = new DaoUser();
-
+        String UType="Client" ;
+       
         if(FName.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Enter First Name !");
@@ -402,7 +405,7 @@ public class RegUser extends javax.swing.JFrame {
         }
         Date date=Date.valueOf(bdate);
 
-        User b = new User(FName, LName, UName,date,Adress);
+        User b = new User(FName, LName, UName,date,Adress,P1,UType);
 
         try {
             db.AddUser(b);
@@ -411,7 +414,13 @@ public class RegUser extends javax.swing.JFrame {
         }
 
         JOptionPane.showMessageDialog(null, "New User Registred with success !");
+        Main rgf = new Main();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.dispose();
+        
     }//GEN-LAST:event_B1ActionPerformed
 
     private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed

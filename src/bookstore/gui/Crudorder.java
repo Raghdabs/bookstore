@@ -258,7 +258,6 @@ public boolean validCheck() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private ArrayList<Book> retourL(){
-        int  selectedRow=jTable1.getSelectedColumn();
          DaoBook db = new DaoBook();
         ArrayList<Book> L = new ArrayList<>();
          ArrayList<Book> LR = new ArrayList<>();
@@ -301,6 +300,9 @@ public boolean validCheck() {
             java.sql.Date sqlDate = java.sql.Date.valueOf(date);
             c.setCommande(sqlDate);
             c.setIdClient(idC);
+            System.out.println(idC);
+            System.out.println(c.getIdClient());
+            System.out.println(c);
             String nom=JOptionPane.showInputDialog(null, "enter FirstName !");  
            String prenom=JOptionPane.showInputDialog(null, "enter LastName !"); 
            String emaik=JOptionPane.showInputDialog(null, "enter Email !");  
@@ -313,16 +315,18 @@ public boolean validCheck() {
            c.setNom(nom);
            c.setPrenom(prenom);
            c.setTel(tel);
+           System.out.println(c.getIdClient());
             try {
                 dc.AddCommande(c);
             } catch (SQLException ex) {
                 Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
             }
-            dc.cBooks(L);
-            System.out.print(dc.listCommande());
+            dc.cBooks(L,idC);
+            System.out.println(c.getIdClient());
             
         } catch (SQLException ex) {
             Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
             
     }//GEN-LAST:event_jButton2ActionPerformed

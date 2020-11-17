@@ -91,7 +91,6 @@ public class DaoCommande {
         double price;
         int idclient;
         Date date;
-        Date releaseDate;
         //Start Connection to DataBase
         con = c.BookStoreDB();
         //Initialisation
@@ -122,7 +121,7 @@ public class DaoCommande {
         con.close();
  
 }
- public void cBooks(ArrayList<Book> L) throws SQLException{
+ public void cBooks(ArrayList<Book> L,int id) throws SQLException{
  PreparedStatement preparedStmt;
         //Start Connection to DataBase
         ArrayList<Commande> LC=this.listCommande();
@@ -133,9 +132,13 @@ public class DaoCommande {
         String query = "insert into cbooks (idCommande,idBook,idClient,title)values(?,?,?,?)";
         preparedStmt = con.prepareStatement(query);
         preparedStmt.setInt(1, LC.get(LC.size()-1).getId());
+        System.out.println(LC.get(LC.size()-1).getId());
         preparedStmt.setInt(2, L.get(i).getId());
-        preparedStmt.setInt(3, LC.get(LC.size()-1).getIdClient());
+        System.out.println(L.get(i).getId());
+        preparedStmt.setInt(3, id);
+        System.out.println(id);
         preparedStmt.setString(4, L.get(i).getTitle());
+        System.out.println( L.get(i).getTitle());
         int resultupdate = preparedStmt.executeUpdate();
         System.out.println(resultupdate);
         }

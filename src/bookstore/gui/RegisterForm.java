@@ -436,7 +436,6 @@ public class RegisterForm extends javax.swing.JFrame {
         File f =chooser.getSelectedFile();
         String filename=f.getAbsolutePath();
         j4.setText(filename);
-        Image getAbsolutePath=null;
             ImageIcon icon=new ImageIcon(filename);
             Image image=icon.getImage().getScaledInstance(ico2.getWidth(), ico2.getHeight(), Image.SCALE_SMOOTH);
             ico2.setIcon(new ImageIcon(image));

@@ -38,7 +38,7 @@ public class DaoUser {
         Adress = user.getAdress();
         UType = user.getUserType();
         //Add New Book Query
-        String query = "insert into user (firstname,lastname,username,birthdate,adress,password,UType)values(?,?,?,?,?,?,?)";
+        String query = "insert into user (firstname,lastname,username,birthdate,adress,password,UserType)values(?,?,?,?,?,?,?)";
         preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1, Fname);
         preparedStmt.setString(2, Lname);

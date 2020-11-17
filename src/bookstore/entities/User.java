@@ -21,6 +21,16 @@ public class User {
     private String Password;
     private String UserType;
 
+    public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress) {
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.UserName = UserName;
+        this.BirthDate = BirthDate;
+        this.Adress = Adress;
+    }
+
+    
+
 
         
 
@@ -29,8 +39,8 @@ public class User {
         this.Password = Password;
         this.UserType = UserType;
     }
-    
-    public User(int id, String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password) {
+
+    public User(int id, String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password, String UserType) {
         this.id = id;
         this.FirstName = FirstName;
         this.LastName = LastName;
@@ -38,17 +48,25 @@ public class User {
         this.BirthDate = BirthDate;
         this.Adress = Adress;
         this.Password = Password;
+        this.UserType = UserType;
+    }
+
+    public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password, String UserType) {
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.UserName = UserName;
+        this.BirthDate = BirthDate;
+        this.Adress = Adress;
+        this.Password = Password;
+        this.UserType = UserType;
+    }
+
     
-    }
+    
 
-    public User(String FName, String LName, String UName, Date date, String Adress) {
-        this.FirstName=FName;
-        this.LastName=FName;
-        this.UserName=UName;
-        this.BirthDate=date;
-        this.Adress=Adress;
-    }
+    
 
+   
 
    
 

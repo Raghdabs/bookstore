@@ -8,7 +8,6 @@ package bookstore.gui;
 import bookstore.entities.Book;
 import bookstore.entities.Commande;
 import static bookstore.gui.Main.idC;
-import dao.DaoBook;
 import dao.DaoCommande;
 import java.awt.Image;
 import java.sql.SQLException;
@@ -32,23 +31,24 @@ public class ListCommandesC extends javax.swing.JFrame {
     public ListCommandesC() {
         initComponents();
         Displaydata();
-        
+
         String imgUrl = "logo.png";
         ImageIcon icone = new ImageIcon(imgUrl);
         Image image = icone.getImage().getScaledInstance(jLabel2.getWidth(), jLabel2.getHeight(), Image.SCALE_SMOOTH);
         jLabel2.setIcon(icone);
         this.setLocationRelativeTo(null);
     }
-public void Displaydata(){
+
+    public void Displaydata() {
         DaoCommande db = new DaoCommande();
-        int id=idC;
+        int id = idC;
         ArrayList<Commande> L = new ArrayList<>();
         try {
             L = db.listCommandeByClient(id);
         } catch (SQLException ex) {
             Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         if (validCheck() == true) {
             while (model.getRowCount() > 0) {
@@ -60,11 +60,12 @@ public void Displaydata(){
         for (int i = 0; i < L.size(); i++) {
             row[0] = L.get(i).getPrix();
             row[1] = L.get(i).getDcommande();
-            
+
             model.addRow(row);
         }
     }
- public int selectRow() {
+
+    public int selectRow() {
         int selected = jTable1.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object selectedObject = model.getValueAt(selected, 1);
@@ -72,7 +73,8 @@ public void Displaydata(){
         int id = Integer.parseInt(s);
         return id;
     }
- public boolean validCheck() {
+
+    public boolean validCheck() {
         if (jTable1.getCellEditor() != null) {
             jTable1.getCellEditor().stopCellEditing();
         }
@@ -86,6 +88,7 @@ public void Displaydata(){
         }
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -245,7 +248,7 @@ public void Displaydata(){
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int id =jTable1.getSelectedRow();
+       int id =jTable1.getSelectedRow();
         DaoCommande dc= new DaoCommande();
          ArrayList<Commande> Li = new ArrayList<>();
         try {
@@ -262,13 +265,13 @@ public void Displaydata(){
         } catch (SQLException ex) {
             Logger.getLogger(ListCommandesC.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String message="Books:\n";
+        String message="You Have Bought"+" "+L.size()+" Books :\n";
         for (int i=0;i<L.size();i++){
-            message=message+"\n"+"Book"+i+":"+L.get(i).getTitle()+'\n' ;
+            message=message+"\n"+"Book "+(i+1)+" :"+L.get(i).getTitle()+'\n' ;
         }
-        
-       JOptionPane.showMessageDialog(null,message);
-       
+
+        JOptionPane.showMessageDialog(null, message + "\n" + "Thank You For Choosing Our Book Store !");
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
