@@ -23,6 +23,10 @@ public class Book {
     public Book() {
     }
 
+    public Book(String title) {
+        this.title = title;
+    }
+
     public Book(String title, String Author, double Price, Date ReleaseDate, String path) {
 
         this.title = title;

@@ -9,7 +9,6 @@ package bookstore.entities;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import bookstore.entities.Book;
 
 /**
  *
@@ -18,57 +17,106 @@ import bookstore.entities.Book;
 public class Commande {
     private int id;
     private double prix;
-    private Date commande;
+    private Date Dcommande;
     private int idClient;
-    private ArrayList<Book> lb;
+    private String nom;
+    private String  prenom;
+    private String email;
+    private int tel;
+    private String adress;
+    
+    
 
     
     public Commande() {
     }
 
-    public Commande(double prix, Date commande, int idClient, ArrayList<Book> lb)
-    {
-
+    public Commande(int id, double prix, Date commande, int idClient) {
         this.id = id;
         this.prix = prix;
-        this.commande = commande;
+        this.Dcommande = commande;
         this.idClient = idClient;
-        this.lb= lb;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public Commande(double prix, Date Dcommande) {
+        this.prix = prix;
+        this.Dcommande = Dcommande;
+    }
+
+    public Commande( double prix, Date Dcommande,int id) {
+        this.id = id;
+        this.prix = prix;
+        this.Dcommande = Dcommande;
+    }
+
+    public Commande(int id, double prix, Date Dcommande, int idClient, String nom, String prenom, String email, int tel, String adress) {
+        this.id = id;
+        this.prix = prix;
+        this.Dcommande = Dcommande;
+        this.idClient = idClient;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.tel = tel;
+        this.adress = adress;
+    }
+
+    public Date getDcommande() {
+        return Dcommande;
+    }
+
+    public void setDcommande(Date Dcommande) {
+        this.Dcommande = Dcommande;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getTel() {
+        return tel;
+    }
+
+    public void setTel(int tel) {
+        this.tel = tel;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+   
+
+    public Commande(double prix, Date commande, int idClient, ArrayList<Book> lb)
+    {
+        this.prix = prix;
+        this.Dcommande = commande;
+        this.idClient = idClient;
+        
+    }
     
     public int getId() {
         return id;
@@ -87,11 +135,11 @@ public class Commande {
     }
 
     public Date getCommande() {
-        return commande;
+        return Dcommande;
     }
 
     public void setCommande(Date commande) {
-        this.commande = commande;
+        this.Dcommande = commande;
     }
 
     public int getIdClient() {
@@ -102,20 +150,7 @@ public class Commande {
         this.idClient = idClient;
     }
 
-    public ArrayList<Book> getLb() {
-        return lb;
-    }
+    
 
-    public void setLb(ArrayList<Book> lb) {
-        this.lb = lb;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     
 }

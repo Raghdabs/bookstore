@@ -5,9 +5,23 @@
  */
 package bookstore.gui;
 
+import bookstore.entities.Book;
+import bookstore.entities.Commande;
+import static bookstore.gui.SousMain.sel;
+import dao.DaoBook;
+import dao.DaoCommande;
 import java.awt.Image;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,13 +34,62 @@ public class Crudorder extends javax.swing.JFrame {
      */
     public Crudorder() {
         initComponents();
+        Displaydata();
           String imgUrl = "logo.png";
         ImageIcon icone = new ImageIcon(imgUrl);
         Image image = icone.getImage().getScaledInstance(jLabel2.getWidth(), jLabel2.getHeight(), Image.SCALE_SMOOTH);
         jLabel2.setIcon(icone);
+        
         this.setLocationRelativeTo(null);
     }
+public void Displaydata(){
+           DaoBook db = new DaoBook();
+        ArrayList<Book> L = new ArrayList<>();
+        
+        try {
+            L = db.listBook();
+        } catch (SQLException ex) {
+            Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        if (validCheck() == true) {
+            while (model.getRowCount() > 0) {
+                model.removeRow(0);
+
+            }
+        }
+        Object[] row = new Object[6];
+        for (int i = 0; i < L.size(); i++) {
+            
+            row[0] = L.get(i).getTitle();
+            row[1] = L.get(i).getAuthor();
+            
+            
+            row[2] = L.get(i).getReleaseDate();
+            row[3] = L.get(i).getPath();
+       row[4] = L.get(i).getPrice();
+        JCheckBox checkBox1= new JCheckBox("C++"); ;
+         checkBox1.setBounds(100,100, 50,50); 
+            
+
+            model.addRow(row);
+        }
+    }
+public boolean validCheck() {
+        if (jTable1.getCellEditor() != null) {
+            jTable1.getCellEditor().stopCellEditing();
+        }
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int j = 0; j < jTable1.getColumnCount(); j++) {
+                String value = jTable1.getValueAt(i, j).toString();
+                if (value.trim().length() == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,11 +100,11 @@ public class Crudorder extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -52,16 +115,6 @@ public class Crudorder extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(34, 49, 63));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Order Date", "Price", "Book", "Client"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
@@ -90,6 +143,24 @@ public class Crudorder extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title ", "Author", "ReleaseDate", "Path", "Price", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,27 +169,28 @@ public class Crudorder extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
+                        .addGap(0, 349, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(28, 28, 28)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
-                        .addGap(20, 20, 20))))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(115, 115, 115)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton2))
@@ -162,7 +234,7 @@ public class Crudorder extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -189,14 +261,17 @@ public class Crudorder extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -206,9 +281,72 @@ public class Crudorder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    private ArrayList<Book> retourL(){
+        int  selectedRow=jTable1.getSelectedColumn();
+         DaoBook db = new DaoBook();
+        ArrayList<Book> L = new ArrayList<>();
+         ArrayList<Book> LR = new ArrayList<>();
+        
+        try {
+            L = db.listBook();
+        } catch (SQLException ex) {
+            Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            for (int i=0 ; i<L.size() ;i++){
+               
+            
+           // String s=model.getValueAt(i, 5).toString();
+            
+           
+            
+            if (model.getValueAt(i, 5)!=null){
+            LR.add(L.get(i));
+            }
+            }
+            
+         System.out.print(LR);
+            
+        return LR;
+    
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+        try {                                         
+            ArrayList<Book> L = new ArrayList<>();
+            java.sql.Date date = null ;
+            DaoCommande dc = new DaoCommande();
+            L=retourL();
+            Commande c = new Commande();
+            c.setPrix(0);
+            for(int i=0;i<L.size();i++){
+                c.setPrix(c.getPrix()+L.get(i).getPrice());
+            }
+            date = Date.valueOf("2019-12-12");
+            c.setCommande(date);
+            c.setIdClient(1);
+            String nom=JOptionPane.showInputDialog(null, "enter FirstName !");  
+           String prenom=JOptionPane.showInputDialog(null, "enter LastName !"); 
+           String emaik=JOptionPane.showInputDialog(null, "enter Email !");  
+           String tell=JOptionPane.showInputDialog(null, "enter Tel !");  
+           int tel= Integer.parseInt(tell);
+           String adress=JOptionPane.showInputDialog(null, "enter Adress !"); 
+           c.setAdress(adress);
+           c.setEmail(emaik);
+           c.setNom(nom);
+           c.setPrenom(prenom);
+           c.setTel(tel);
+            try {
+                dc.AddCommande(c);
+            } catch (SQLException ex) {
+                Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dc.cBooks(L);
+            System.out.print(dc.listCommande());
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
