@@ -38,8 +38,15 @@ public class User {
         this.BirthDate = BirthDate;
         this.Adress = Adress;
         this.Password = Password;
-        this.UserType = UserType;
     
+    }
+
+    public User(String FName, String LName, String UName, Date date, String Adress) {
+        this.FirstName=FName;
+        this.LastName=FName;
+        this.UserName=UName;
+        this.BirthDate=date;
+        this.Adress=Adress;
     }
 
 

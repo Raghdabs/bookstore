@@ -376,7 +376,7 @@ Displaydata();
                 String value = jTable1.getValueAt(i, j).toString();
                 if (value.trim().length() == 0) {
                     return false;
-                }
+                } 
             }
         }
         return true;

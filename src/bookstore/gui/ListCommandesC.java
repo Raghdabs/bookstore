@@ -7,6 +7,7 @@ package bookstore.gui;
 
 import bookstore.entities.Book;
 import bookstore.entities.Commande;
+import static bookstore.gui.Main.idC;
 import dao.DaoBook;
 import dao.DaoCommande;
 import java.awt.Image;
@@ -23,12 +24,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Loukas
  */
-public class ListCommandes extends javax.swing.JFrame {
+public class ListCommandesC extends javax.swing.JFrame {
 
     /**
      * Creates new form ListCommandes
      */
-    public ListCommandes() {
+    public ListCommandesC() {
         initComponents();
         Displaydata();
         
@@ -39,14 +40,15 @@ public class ListCommandes extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 public void Displaydata(){
-           DaoCommande db = new DaoCommande();
+        DaoCommande db = new DaoCommande();
+        int id=idC;
         ArrayList<Commande> L = new ArrayList<>();
         try {
-            L = db.listCommandeByClient();
+            L = db.listCommandeByClient(id);
         } catch (SQLException ex) {
             Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         if (validCheck() == true) {
             while (model.getRowCount() > 0) {
@@ -99,13 +101,13 @@ public void Displaydata(){
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -164,28 +166,19 @@ public void Displaydata(){
 
         jPanel1.setBackground(new java.awt.Color(34, 49, 63));
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jButton1.setText("Refresh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Price", "Date Command", "null"
+                "Price", "Date Command"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jButton2.setText("View Buyed Books");
+        jButton2.setText("View Bought Books");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -198,11 +191,7 @@ public void Displaydata(){
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(166, 166, 166)
@@ -217,10 +206,8 @@ public void Displaydata(){
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -257,27 +244,23 @@ public void Displaydata(){
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.Displaydata();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int id =jTable1.getSelectedRow();
         DaoCommande dc= new DaoCommande();
          ArrayList<Commande> Li = new ArrayList<>();
         try {
-            Li = dc.listCommandeByClient();
+            Li = dc.listCommandeByClient(idC);
+            
         } catch (SQLException ex) {
             Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-         
+     
         
         ArrayList<Book> L = new ArrayList<>();
         try {
             L=dc.listCommandeById(Li.get(id).getId());
         } catch (SQLException ex) {
-            Logger.getLogger(ListCommandes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListCommandesC.class.getName()).log(Level.SEVERE, null, ex);
         }
         String message="Books:\n";
         for (int i=0;i<L.size();i++){
@@ -305,26 +288,28 @@ public void Displaydata(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListCommandesC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListCommandesC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListCommandesC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListCommandes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListCommandesC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListCommandes().setVisible(true);
+                new ListCommandesC().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

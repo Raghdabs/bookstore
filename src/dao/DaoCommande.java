@@ -10,9 +10,7 @@ import bookstore.entities.Book;
 import bookstore.entities.Commande;
 import java.sql.*;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.ListIterator;
 /**
  *
  * @author noure
@@ -33,42 +31,42 @@ public class DaoCommande {
         stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
-            int id = rs.getInt("id");
-            double prix = rs.getDouble("prix");
+            int id=rs.getInt("id");
+            String nom = rs.getString("nom");
             Date d = rs.getDate("dcommande");
-            int idC = rs.getInt("idclient");
-               
-            Commande C = new Commande(id,prix, d, idC);
+            int tel = rs.getInt("tel");
+            String adress = rs.getString("adress");
+            double prix = rs.getDouble("prix");
+            Commande C = new Commande(id,nom,d,tel,adress,prix);
             li.add(C);
         }
+        
         con.close();
         return li;
     }
-    public ArrayList<Commande> listCommandeByClient( ) throws SQLException {
+    public ArrayList<Commande> listCommandeByClient(int idClient ) throws SQLException {
         con = c.BookStoreDB();
-        Statement stmt;
         PreparedStatement preparedStmt;
         ArrayList<Book> lb = new ArrayList<Book>(); 
         ArrayList<Commande> li = new ArrayList<Commande>(); 
         String query = "select * from commande where idClient = ?";
        preparedStmt = con.prepareStatement(query);
-        preparedStmt.setInt(1, 1);
+        preparedStmt.setInt(1, idClient);
         ResultSet rs = preparedStmt.executeQuery();
         while (rs.next()) {
-            
+            int id=rs.getInt("id");
             double prix = rs.getDouble("prix");
             Date d = rs.getDate("dcommande");
-           int id =rs.getInt("id");
                
-            Commande C = new Commande(prix, d,id);
+            Commande C = new Commande(id,prix, d);
             li.add(C);
         }
         con.close();
+        
         return li;
     }
     public ArrayList<Book> listCommandeById(int id ) throws SQLException {
         con = c.BookStoreDB();
-        Statement stmt;
         PreparedStatement preparedStmt;
         ArrayList<Book> lb = new ArrayList<Book>(); 
         ArrayList<Commande> li = new ArrayList<Commande>(); 
@@ -128,7 +126,6 @@ public class DaoCommande {
  PreparedStatement preparedStmt;
         //Start Connection to DataBase
         ArrayList<Commande> LC=this.listCommande();
-        System.out.print(LC+"Botti");
         con = c.BookStoreDB();
         //Initialisation
         

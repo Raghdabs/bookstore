@@ -43,7 +43,15 @@ public class Commande {
         this.Dcommande = Dcommande;
     }
 
-    public Commande( double prix, Date Dcommande,int id) {
+    public Commande(String nom, Date Dcommande,  int tel, String adress,double prix) {
+        this.prix = prix;
+        this.Dcommande = Dcommande;
+        this.nom = nom;
+        this.tel = tel;
+        this.adress = adress;
+    }
+
+    public Commande( int id,double prix, Date Dcommande) {
         this.id = id;
         this.prix = prix;
         this.Dcommande = Dcommande;
@@ -119,7 +127,17 @@ public class Commande {
     }
     
     public int getId() {
+        System.out.print("heres your id");
         return id;
+    }
+
+    public Commande(int id,String nom, Date Dcommande,  int tel, String adress, double prix) {
+        this.id = id;
+        this.prix = prix;
+        this.Dcommande = Dcommande;
+        this.nom = nom;
+        this.tel = tel;
+        this.adress = adress;
     }
 
     public void setId(int id) {

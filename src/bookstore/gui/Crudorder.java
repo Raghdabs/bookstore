@@ -7,21 +7,12 @@ package bookstore.gui;
 
 import bookstore.entities.Book;
 import bookstore.entities.Commande;
-import static bookstore.gui.SousMain.sel;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static bookstore.gui.Main.idC;
 import dao.DaoBook;
 import dao.DaoCommande;
 import java.awt.Image;
-import java.sql.Date;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -119,6 +110,7 @@ public boolean validCheck() {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(34, 49, 63));
 
@@ -165,16 +157,12 @@ public boolean validCheck() {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -312,7 +300,7 @@ public boolean validCheck() {
             java.time.LocalDate date = java.time.LocalDate.now();
             java.sql.Date sqlDate = java.sql.Date.valueOf(date);
             c.setCommande(sqlDate);
-            c.setIdClient(1);
+            c.setIdClient(idC);
             String nom=JOptionPane.showInputDialog(null, "enter FirstName !");  
            String prenom=JOptionPane.showInputDialog(null, "enter LastName !"); 
            String emaik=JOptionPane.showInputDialog(null, "enter Email !");  
@@ -350,7 +338,7 @@ public boolean validCheck() {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-       ListCommandes lc = new ListCommandes();
+       ListCommandesC lc = new ListCommandesC();
         lc.setVisible(true);
         lc.pack();
         lc.setLocationRelativeTo(null);

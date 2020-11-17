@@ -24,11 +24,12 @@ import javax.swing.JOptionPane;
  * @author Loukas
  */
 public class Main extends javax.swing.JFrame {
-
+static int idC;
     /**
      * Creates new form Main
      */
     public Main() {
+        
         initComponents();
         String imgUrl = "logo.png";
         ImageIcon icone = new ImageIcon(imgUrl);
@@ -282,6 +283,7 @@ public class Main extends javax.swing.JFrame {
 
             if (rs.next()) {
                 if (jComboBox1.getSelectedIndex() == 0) {
+                    idC=rs.getInt("id");
                     Menu mf = new Menu();
                     mf.setVisible(true);
                     mf.pack();
@@ -291,6 +293,7 @@ public class Main extends javax.swing.JFrame {
 
                     this.dispose();
                 }else {
+                    idC=rs.getInt("id");
                     Crudorder co = new Crudorder();
                     co .setVisible(true);
                     co .pack();
@@ -306,8 +309,8 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
