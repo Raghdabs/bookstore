@@ -25,7 +25,7 @@ public class DaoUser {
     public void AddUser(User user) throws SQLException {
         //Declaration
         PreparedStatement preparedStmt;
-        String Fname, Lname, Uname, Password, Adress;
+        String Fname, Lname, Uname, Password, Adress,UType;
         Date Birthdate;
         //Start Connection to DataBase
         con = c.BookStoreDB();
@@ -36,8 +36,9 @@ public class DaoUser {
         Birthdate = user.getBirthDate();
         Password = user.getPassword();
         Adress = user.getAdress();
+        UType = user.getUserType();
         //Add New Book Query
-        String query = "insert into user (firstname,lastname,username,birthdate,adress,password)values(?,?,?,?,?,?)";
+        String query = "insert into user (firstname,lastname,username,birthdate,adress,password,UType)values(?,?,?,?,?,?,?)";
         preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1, Fname);
         preparedStmt.setString(2, Lname);
@@ -45,6 +46,7 @@ public class DaoUser {
         preparedStmt.setDate(4, Birthdate);
         preparedStmt.setString(5, Adress);
         preparedStmt.setString(6, Password);
+        preparedStmt.setString(7, UType);
         int resultupdate = preparedStmt.executeUpdate();
         //Console Affichage
         System.out.println(resultupdate);

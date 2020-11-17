@@ -113,7 +113,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Gestion des commandes");
+        jButton2.setText("Orders");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -179,11 +179,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Crudorder m = new Crudorder();
-                    m.setVisible(true);
-                    m.pack();
-                    m.setLocationRelativeTo(null);
-                    m.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+        ListCommandes lm = new ListCommandes();
+                    lm.setVisible(true);
+                    lm.pack();
+                    lm.setLocationRelativeTo(null);
+                    lm.setExtendedState(JFrame.MAXIMIZED_HORIZ);
                     
     }//GEN-LAST:event_jButton2ActionPerformed
 

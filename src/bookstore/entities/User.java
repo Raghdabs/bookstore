@@ -19,10 +19,15 @@ public class User {
     private Date BirthDate;
     private String Adress;
     private String Password;
+    private String UserType;
 
-    public User(String UserName, String Password) {
+
+        
+
+    public User(String UserName, String Password,String UserType) {
         this.UserName = UserName;
         this.Password = Password;
+        this.UserType = UserType;
     }
     
     public User(int id, String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password) {
@@ -33,16 +38,12 @@ public class User {
         this.BirthDate = BirthDate;
         this.Adress = Adress;
         this.Password = Password;
+        this.UserType = UserType;
+    
     }
 
-    public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.UserName = UserName;
-        this.BirthDate = BirthDate;
-        this.Adress = Adress;
-        this.Password = Password;
-    }
+
+   
 
     public int getId() {
         return id;
@@ -98,6 +99,14 @@ public class User {
 
     public void setPassword(String Password) {
         this.Password = Password;
+    }
+
+    public String getUserType() {
+        return UserType;
+    }
+
+    public void setUserType(String UserType) {
+        this.UserType = UserType;
     }
     
 }

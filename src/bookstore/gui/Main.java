@@ -59,6 +59,8 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(36, 37, 42));
@@ -170,20 +172,16 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Select User Type");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin ", "Client" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(P1)
-                    .addComponent(T1))
-                .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,6 +192,18 @@ public class Main extends javax.swing.JFrame {
                 .addGap(141, 141, 141)
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(P1)
+                    .addComponent(T1))
+                .addGap(54, 54, 54))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,13 +216,17 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(46, 46, 46)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,43 +264,50 @@ public class Main extends javax.swing.JFrame {
         boolean b = false;
         String Uname = T1.getText();
         String Password = String.valueOf(P1.getPassword());
-        con=c.BookStoreDB();
-        if(Uname.equals(""))
-        {
+        String UType = String.valueOf(jComboBox1.getSelectedItem());
+        con = c.BookStoreDB();
+        if (Uname.equals("")) {
             JOptionPane.showMessageDialog(null, "Enter User Name !");
-        }
-        
-        else if(Password.equals(""))
-        {
+        } else if (Password.equals("")) {
             JOptionPane.showMessageDialog(null, "Enter Password !");
         }
-         String query = "SELECT * FROM `user` WHERE `username` =? AND `password` =?";
+        String query = "SELECT * FROM `user` WHERE `username` =? AND `password` =? AND `UserType` =?";
         try {
             ps = con.prepareStatement(query);
             ps.setString(1, Uname);
             ps.setString(2, Password);
-            
+            ps.setString(3, UType);
+
             rs = ps.executeQuery();
-            
-            if(rs.next())
-            {
+
+            if (rs.next()) {
+                if (jComboBox1.getSelectedIndex() == 0) {
                     Menu mf = new Menu();
                     mf.setVisible(true);
                     mf.pack();
                     mf.setLocationRelativeTo(null);
                     mf.setExtendedState(JFrame.MAXIMIZED_HORIZ);
-                    JOptionPane.showMessageDialog(null, "Welcome "+""+Uname);
-                    
+                    JOptionPane.showMessageDialog(null, "Welcome " + "" + Uname);
+
                     this.dispose();
-            }
-            else{
-                    JOptionPane.showMessageDialog(null, "Incorrect Username Or Password", "Login Failed", 2);
+                }else {
+                    Crudorder co = new Crudorder();
+                    co .setVisible(true);
+                    co .pack();
+                    co .setLocationRelativeTo(null);
+                    co .setExtendedState(JFrame.MAXIMIZED_HORIZ);
+                    JOptionPane.showMessageDialog(null, "Welcome " + "" + Uname);
+                    
                 }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect Username Or Password", "Login Failed", 2);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -303,17 +324,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void T1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T1FocusGained
-        if(T1.getText().equals("Enter User Name")){
+        if (T1.getText().equals("Enter User Name")) {
             T1.setText("");
-            T1.setForeground(new Color(155,155,155));
+            T1.setForeground(new Color(155, 155, 155));
         }
     }//GEN-LAST:event_T1FocusGained
 
     private void T1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T1FocusLost
-        if(T1.getText().equals("")){
+        if (T1.getText().equals("")) {
             T1.setText("Enter User Name");
-            T1.setForeground(new Color(155,155,155));
-    } 
+            T1.setForeground(new Color(155, 155, 155));
+        }
     }//GEN-LAST:event_T1FocusLost
 
     /**
@@ -347,7 +368,7 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-            new Main().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
@@ -357,6 +378,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField T1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -364,6 +386,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
