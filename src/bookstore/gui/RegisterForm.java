@@ -402,7 +402,12 @@ public class RegisterForm extends javax.swing.JFrame {
             Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(null, "New Book Registred with success !");
-        this.dispose();
+        SousMain m = new SousMain();
+                    m.setVisible(true);
+                    m.pack();
+                    m.setLocationRelativeTo(null);
+                    m.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+                    this.dispose();
          
        
         

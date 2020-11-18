@@ -195,6 +195,7 @@ public class Menu extends javax.swing.JFrame {
                     m.pack();
                     m.setLocationRelativeTo(null);
                     m.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+                    this.dispose();
                     
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -205,6 +206,7 @@ public class Menu extends javax.swing.JFrame {
                     lm.pack();
                     lm.setLocationRelativeTo(null);
                     lm.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+                    this.dispose();
                     
                     
     }//GEN-LAST:event_jButton2ActionPerformed
