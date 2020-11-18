@@ -374,11 +374,11 @@ static int client=0;
     }//GEN-LAST:event_T1FocusLost
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        String imgUrl = "./img/c2.png";
+        String imgUrl = "img/c2.png";
         ImageIcon icon=new ImageIcon(imgUrl);
             Image image=icon.getImage().getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
             jLabel10.setIcon(new ImageIcon(image));
-            String imgUrl2 = "./img/a1.png";
+            String imgUrl2 = "img/a1.png";
         ImageIcon icon2=new ImageIcon(imgUrl2);
             Image image2=icon2.getImage().getScaledInstance(jLabel9.getWidth(), jLabel9.getHeight(), Image.SCALE_SMOOTH);
             jLabel9.setIcon(new ImageIcon(image2));
@@ -387,11 +387,11 @@ static int client=0;
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        String imgUrl = "./img/a2.png";
+        String imgUrl = "img/a2.png";
         ImageIcon icon=new ImageIcon(imgUrl);
             Image image=icon.getImage().getScaledInstance(jLabel9.getWidth(), jLabel9.getHeight(), Image.SCALE_SMOOTH);
             jLabel9.setIcon(new ImageIcon(image));
-            String imgUrl2 = "./img/c1.png";
+            String imgUrl2 = "img/c1.png";
         ImageIcon icon2=new ImageIcon(imgUrl2);
             Image image2=icon2.getImage().getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
             jLabel10.setIcon(new ImageIcon(image2));
