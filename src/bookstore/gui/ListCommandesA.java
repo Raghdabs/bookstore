@@ -7,15 +7,11 @@ package bookstore.gui;
 
 import bookstore.entities.Book;
 import bookstore.entities.Commande;
-import static bookstore.gui.Main.idC;
-import dao.DaoBook;
 import dao.DaoCommande;
-import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -50,15 +46,14 @@ public void Displaydata(){
 
             }
         }
-        Object[] row = new Object[5];
+        Object[] row = new Object[8];
         for (int i = 0; i < L.size(); i++) {
-            row[0] = L.get(i).getNom();
-            row[1] = L.get(i).getDcommande();
-            row[2] = L.get(i).getTel();
+            row[0] = L.get(i).getId();
+            row[1] = L.get(i).getNom();
+            row[2] = L.get(i).getDcommande();
             row[3] = L.get(i).getAdress();
-            row[4] = L.get(i).getPrix();
-           
-            
+            row[4] = L.get(i).getTel();
+            row[5] = L.get(i).getPrix();
             model.addRow(row);
         }
     }
@@ -159,11 +154,11 @@ public void Displaydata(){
                 .addGap(356, 356, 356))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -174,7 +169,7 @@ public void Displaydata(){
 
             },
             new String [] {
-                "Nom Client", "Date Command", "Tel", "Adress", "Price"
+                "Order Ref", "Nom Client", "Date Command", "Tel", "Adress", "Price"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -183,6 +178,7 @@ public void Displaydata(){
         jButton2.setFont(new java.awt.Font("Constantia", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("View BookBy Order");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -192,6 +188,7 @@ public void Displaydata(){
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back To Menu");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

@@ -25,19 +25,20 @@ public class DaoCommande {
     public ArrayList<Commande> listCommande() throws SQLException {
         con = c.BookStoreDB();
         Statement stmt;
-        ArrayList<Book> lb = new ArrayList<Book>(); 
-        ArrayList<Commande> li = new ArrayList<Commande>(); 
+        ArrayList<Commande> li = new ArrayList<>(); 
         String query = "select * from commande";
         stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
             int id=rs.getInt("id");
             String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
             Date d = rs.getDate("dcommande");
             int tel = rs.getInt("tel");
             String adress = rs.getString("adress");
             double prix = rs.getDouble("prix");
-            Commande C = new Commande(id,nom,d,tel,adress,prix);
+            String full=nom+" "+prenom;
+            Commande C = new Commande(id,full,d,adress,tel,prix);
             li.add(C);
         }
         
@@ -47,18 +48,22 @@ public class DaoCommande {
     public ArrayList<Commande> listCommandeByClient(int idClient ) throws SQLException {
         con = c.BookStoreDB();
         PreparedStatement preparedStmt;
-        ArrayList<Book> lb = new ArrayList<Book>(); 
-        ArrayList<Commande> li = new ArrayList<Commande>(); 
+        ArrayList<Commande> li = new ArrayList<>(); 
         String query = "select * from commande where idClient = ?";
        preparedStmt = con.prepareStatement(query);
         preparedStmt.setInt(1, idClient);
         ResultSet rs = preparedStmt.executeQuery();
         while (rs.next()) {
             int id=rs.getInt("id");
+            Date date=rs.getDate("dcommande");
+            String n = rs.getString("nom");
+            String p=rs.getString("prenom");
+            String adress=rs.getString("adress");
+            int tel=rs.getInt("tel");
             double prix = rs.getDouble("prix");
-            Date d = rs.getDate("dcommande");
+            String full=n+" "+p;
                
-            Commande C = new Commande(id,prix, d);
+            Commande C = new Commande(id,full,date,adress,tel,prix);
             li.add(C);
         }
         con.close();

@@ -43,6 +43,15 @@ public class Commande {
         this.Dcommande = Dcommande;
     }
 
+    public Commande(int id,String nom, Date Dcommande, String adress, int tel,  double prix) {
+        this.id = id;
+        this.prix = prix;
+        this.Dcommande = Dcommande;
+        this.nom = nom;
+        this.tel = tel;
+        this.adress = adress;
+    }
+
     public Commande(String nom, Date Dcommande,  int tel, String adress,double prix) {
         this.prix = prix;
         this.Dcommande = Dcommande;
