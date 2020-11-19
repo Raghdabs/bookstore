@@ -116,12 +116,11 @@ static int client=0;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel3))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel2.setBackground(new java.awt.Color(34, 49, 63));
@@ -185,7 +184,7 @@ static int client=0;
         });
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Loukas\\Desktop\\Nouveau dossier (3)\\bookstore\\img\\a1.PNG")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Loukas\\Desktop\\Nouveau dossier (3)\\bookstore\\a1.PNG")); // NOI18N
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
@@ -193,7 +192,7 @@ static int client=0;
         });
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Loukas\\Desktop\\Nouveau dossier (3)\\bookstore\\img\\c1.PNG")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Loukas\\Desktop\\Nouveau dossier (3)\\bookstore\\c1.PNG")); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -374,11 +373,11 @@ static int client=0;
     }//GEN-LAST:event_T1FocusLost
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        String imgUrl = "img/c2.png";
+        String imgUrl = "c2.png";
         ImageIcon icon=new ImageIcon(imgUrl);
             Image image=icon.getImage().getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
             jLabel10.setIcon(new ImageIcon(image));
-            String imgUrl2 = "img/a1.png";
+            String imgUrl2 = "a1.png";
         ImageIcon icon2=new ImageIcon(imgUrl2);
             Image image2=icon2.getImage().getScaledInstance(jLabel9.getWidth(), jLabel9.getHeight(), Image.SCALE_SMOOTH);
             jLabel9.setIcon(new ImageIcon(image2));
@@ -387,11 +386,11 @@ static int client=0;
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        String imgUrl = "img/a2.png";
+        String imgUrl = "a2.png";
         ImageIcon icon=new ImageIcon(imgUrl);
             Image image=icon.getImage().getScaledInstance(jLabel9.getWidth(), jLabel9.getHeight(), Image.SCALE_SMOOTH);
             jLabel9.setIcon(new ImageIcon(image));
-            String imgUrl2 = "img/c1.png";
+            String imgUrl2 = "c1.png";
         ImageIcon icon2=new ImageIcon(imgUrl2);
             Image image2=icon2.getImage().getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
             jLabel10.setIcon(new ImageIcon(image2));
