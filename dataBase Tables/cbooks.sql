@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 17 nov. 2020 à 06:29
--- Version du serveur :  10.4.13-MariaDB
--- Version de PHP : 7.4.7
+-- Généré le : lun. 23 nov. 2020 à 19:42
+-- Version du serveur :  10.4.14-MariaDB
+-- Version de PHP : 7.3.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,9 +39,8 @@ CREATE TABLE `cbooks` (
 --
 
 INSERT INTO `cbooks` (`idCommande`, `idBook`, `idClient`, `title`) VALUES
-(21, 22, 1, 'alf lila w lila'),
-(22, 22, 1, 'alf lila w lila'),
-(22, 26, 1, 'Updated');
+(1, 1, 3, 'Le Petit Prince'),
+(1, 5, 3, 'Le Grand Meaulnes');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

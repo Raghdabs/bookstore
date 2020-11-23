@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 11 nov. 2020 à 16:56
--- Version du serveur :  10.4.13-MariaDB
--- Version de PHP : 7.4.7
+-- Généré le : lun. 23 nov. 2020 à 19:42
+-- Version du serveur :  10.4.14-MariaDB
+-- Version de PHP : 7.3.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,8 +41,15 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `title`, `price`, `author`, `releaseDate`, `path`) VALUES
-(22, 'title', 300.1, 'name', '2020-11-12', 'C:\\Users\\Loukas\\Pictures\\Sans titre.png'),
-(24, 'azezae', 3000, 'ezaaze', '2020-11-20', 'C:\\Users\\Loukas\\Desktop\\images (1).png');
+(1, 'Le Petit Prince', 50, 'Antoine de Saint-Exu', '2020-11-17', NULL),
+(3, '	Les Rougon-Macquart', 50, 'Émile Zola', '2020-11-17', NULL),
+(4, 'Le Rouge et le Noir', 50, 'Stendhal', '2020-11-17', NULL),
+(5, 'Le Grand Meaulnes', 50, 'Alain-Fournier', '2020-11-17', NULL),
+(6, 'Les Trois Mousquetai', 50, 'Alexandre Dumas', '2020-11-17', NULL),
+(7, 'Journal d\'Anne Frank', 50, 'Anne Frank', '2020-11-17', NULL),
+(8, 'La nuit des temps', 50, 'René Barjavel', '2020-11-17', NULL),
+(9, 'Ils étaient dix', 50, 'Agatha Christie', '2020-11-17', NULL),
+(10, 'Sans famille', 50, 'Hector Malot', NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -62,7 +69,7 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT pour la table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
