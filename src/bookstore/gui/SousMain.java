@@ -317,9 +317,11 @@ public final class SousMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
+     
             sel = selectRow();
+            System.out.print(sel);
             int selectedRow=jTable1.getSelectedRow();
+            System.out.print(selectedRow);
             java.sql.Date date = null;
             DaoBook db =new DaoBook();
             /*UpdateForm uod = null;
@@ -335,20 +337,25 @@ public final class SousMain extends javax.swing.JFrame {
             
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             String title=model.getValueAt(selectedRow, 1).toString();
+            System.out.println(title);
             String p=model.getValueAt(selectedRow, 2).toString();
             double price=Double.valueOf(p);
+            System.out.println(price);
             String author=model.getValueAt(selectedRow, 3).toString();
+            System.out.println(author);
             String d=model.getValueAt(selectedRow, 4).toString();
-            System.out.print(d);
+            
             date = Date.valueOf(d);
-            
+            System.out.println(date);
             String path=model.getValueAt(selectedRow, 5).toString();
-            
+            System.out.println(path);
+        try {
             db.UpdateB(sel, title, price, author, date, path);
         } catch (SQLException ex) {
             Logger.getLogger(SousMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-       Displaydata();
+            JOptionPane.showMessageDialog(null, "Updated !");
+            Displaydata();
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

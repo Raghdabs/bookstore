@@ -325,11 +325,14 @@ public boolean validCheck() {
            String tell="";
            int tel= 0;
            String adress="";
-        try {                                         
+                                               
             ArrayList<Book> L = new ArrayList<>();
             
             DaoCommande dc = new DaoCommande();
             L=retourL();
+            if(L.isEmpty()){
+            JOptionPane.showMessageDialog(null, "you need to make at least one order !");
+            }else{
             Commande c = new Commande();
             c.setPrix(0);
             for(int i=0;i<L.size();i++){
@@ -344,12 +347,17 @@ public boolean validCheck() {
             System.out.println(c);
             DaoUser usr = new DaoUser();
             User u = new User();
-            u=usr.getUserById(idC);
+    try {
+        u=usr.getUserById(idC);
+    } catch (SQLException ex) {
+        Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
+    }
             c.setAdress(u.getAdress());
             c.setNom(u.getFirstName());
             c.setPrenom(u.getLastName());
             c.setTel(u.getTel());
             c.setEmail(u.getEmail());
+            
             try {
                 dc.AddCommande(c);
              
@@ -357,15 +365,17 @@ public boolean validCheck() {
             } catch (SQLException ex) {
                 Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
             }
-            dc.cBooks(L,idC);
+    try {
+        dc.cBooks(L,idC);
+    } catch (SQLException ex) {
+        Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
+    }
             System.out.println(c.getIdClient());
              
-        } catch (SQLException ex) {
-            Logger.getLogger(Crudorder.class.getName()).log(Level.SEVERE, null, ex);
-            
+       JOptionPane.showMessageDialog(null, "Order done !");
         }
         
-            
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked

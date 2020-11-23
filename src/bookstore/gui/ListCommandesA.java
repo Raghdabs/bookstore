@@ -259,6 +259,8 @@ public void Displaydata(){
       
         
         ArrayList<Book> L = new ArrayList<>();
+        
+        if(jTable1.isRowSelected(selRow)){
         try {
             L=dc.listCommandeById(Li.get(selRow).getId());
             
@@ -271,7 +273,10 @@ public void Displaydata(){
         }
         
        JOptionPane.showMessageDialog(null,message);
-       
+        }
+        else {
+        JOptionPane.showMessageDialog(null,"Select one Order to view ordred book !");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
