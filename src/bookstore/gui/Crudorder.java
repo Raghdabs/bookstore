@@ -7,9 +7,11 @@ package bookstore.gui;
 
 import bookstore.entities.Book;
 import bookstore.entities.Commande;
+import bookstore.entities.User;
 import static bookstore.gui.Main.idC;
 import dao.DaoBook;
 import dao.DaoCommande;
+import dao.DaoUser;
 import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -332,23 +334,14 @@ public boolean validCheck() {
             System.out.println(idC);
             System.out.println(c.getIdClient());
             System.out.println(c);
-            if (fa==0){
-             nom=JOptionPane.showInputDialog(null, "enter FirstName !");  
-           prenom=JOptionPane.showInputDialog(null, "enter LastName !"); 
-          emaik=JOptionPane.showInputDialog(null, "enter Email !");  
-         tell=JOptionPane.showInputDialog(null, "enter Tel !");  
-         tel= Integer.parseInt(tell);
-           adress=JOptionPane.showInputDialog(null, "enter Adress !"); 
-               
-           c.setAdress(adress);
-           c.setEmail(emaik);
-           c.setNom(nom);
-           c.setPrenom(prenom);
-           c.setTel(tel);
-           System.out.println(c.getIdClient());
-            fa++;
-            }
-            
+            DaoUser usr = new DaoUser();
+            User u = new User();
+            u=usr.getUserById(idC);
+            c.setAdress(u.getAdress());
+            c.setNom(u.getFirstName());
+            c.setPrenom(u.getLastName());
+            c.setTel(u.getTel());
+            c.setEmail(u.getEmail());
             try {
                 dc.AddCommande(c);
             } catch (SQLException ex) {

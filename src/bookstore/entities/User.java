@@ -21,6 +21,7 @@ public class User {
     private String Password;
     private String UserType;
     private int tel;
+    private String email;
     
 
     public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress) {
@@ -30,6 +31,26 @@ public class User {
         this.BirthDate = BirthDate;
         this.Adress = Adress;
    
+    }
+
+    public User(int id, String FirstName, String LastName, String Adress, int tel,String email) {
+        this.id = id;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Adress = Adress;
+        this.tel = tel;
+        this.email=email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public User() {
     }
 
     public int getTel() {
@@ -62,7 +83,7 @@ public class User {
         this.UserType = UserType;
     }
 
-    public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password, String UserType, int tel) {
+    public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password, String UserType, int tel,String email) {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.UserName = UserName;
@@ -71,6 +92,7 @@ public class User {
         this.Password = Password;
         this.UserType = UserType;
         this.tel=tel;
+        this.email=email;
     }
 
     
