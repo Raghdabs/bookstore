@@ -26,7 +26,9 @@ import javax.swing.table.DefaultTableModel;
  * @author RBS
  */
 public class Crudorder extends javax.swing.JFrame {
+static int fa=0;
 
+               
     /**
      * Creates new form CrudCommande
      */
@@ -304,7 +306,15 @@ public boolean validCheck() {
         return LR;
     
     }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+            String nom="";
+           String prenom="";
+           String emaik="";
+           String tell="";
+           int tel= 0;
+           String adress="";
         try {                                         
             ArrayList<Book> L = new ArrayList<>();
             
@@ -322,12 +332,13 @@ public boolean validCheck() {
             System.out.println(idC);
             System.out.println(c.getIdClient());
             System.out.println(c);
-            String nom=JOptionPane.showInputDialog(null, "enter FirstName !");  
-           String prenom=JOptionPane.showInputDialog(null, "enter LastName !"); 
-           String emaik=JOptionPane.showInputDialog(null, "enter Email !");  
-           String tell=JOptionPane.showInputDialog(null, "enter Tel !");  
-           int tel= Integer.parseInt(tell);
-           String adress=JOptionPane.showInputDialog(null, "enter Adress !"); 
+            if (fa==0){
+             nom=JOptionPane.showInputDialog(null, "enter FirstName !");  
+           prenom=JOptionPane.showInputDialog(null, "enter LastName !"); 
+          emaik=JOptionPane.showInputDialog(null, "enter Email !");  
+         tell=JOptionPane.showInputDialog(null, "enter Tel !");  
+         tel= Integer.parseInt(tell);
+           adress=JOptionPane.showInputDialog(null, "enter Adress !"); 
                
            c.setAdress(adress);
            c.setEmail(emaik);
@@ -335,6 +346,9 @@ public boolean validCheck() {
            c.setPrenom(prenom);
            c.setTel(tel);
            System.out.println(c.getIdClient());
+            fa++;
+            }
+            
             try {
                 dc.AddCommande(c);
             } catch (SQLException ex) {

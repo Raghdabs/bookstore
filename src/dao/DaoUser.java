@@ -27,6 +27,7 @@ public class DaoUser {
         PreparedStatement preparedStmt;
         String Fname, Lname, Uname, Password, Adress,UType;
         Date Birthdate;
+        int tel;
         //Start Connection to DataBase
         con = c.BookStoreDB();
         //Initialisation
@@ -37,8 +38,9 @@ public class DaoUser {
         Password = user.getPassword();
         Adress = user.getAdress();
         UType = user.getUserType();
+        tel= user.getTel();
         //Add New Book Query
-        String query = "insert into user (firstname,lastname,username,birthdate,adress,password,UserType)values(?,?,?,?,?,?,?)";
+        String query = "insert into user (firstname,lastname,username,birthdate,adress,password,UserType,tel)values(?,?,?,?,?,?,?,?)";
         preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1, Fname);
         preparedStmt.setString(2, Lname);
@@ -47,6 +49,7 @@ public class DaoUser {
         preparedStmt.setString(5, Adress);
         preparedStmt.setString(6, Password);
         preparedStmt.setString(7, UType);
+          preparedStmt.setInt(8, tel);
         int resultupdate = preparedStmt.executeUpdate();
         //Console Affichage
         System.out.println(resultupdate);

@@ -20,6 +20,8 @@ public class User {
     private String Adress;
     private String Password;
     private String UserType;
+    private int tel;
+    
 
     public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress) {
         this.FirstName = FirstName;
@@ -27,6 +29,15 @@ public class User {
         this.UserName = UserName;
         this.BirthDate = BirthDate;
         this.Adress = Adress;
+   
+    }
+
+    public int getTel() {
+        return tel;
+    }
+
+    public void setTel(int tel) {
+        this.tel = tel;
     }
 
     
@@ -51,7 +62,7 @@ public class User {
         this.UserType = UserType;
     }
 
-    public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password, String UserType) {
+    public User(String FirstName, String LastName, String UserName, Date BirthDate, String Adress, String Password, String UserType, int tel) {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.UserName = UserName;
@@ -59,6 +70,7 @@ public class User {
         this.Adress = Adress;
         this.Password = Password;
         this.UserType = UserType;
+        this.tel=tel;
     }
 
     
