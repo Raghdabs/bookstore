@@ -182,12 +182,12 @@ public final class SousMain extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
                                 .addComponent(jButton2)
-                                .addGap(33, 33, 33)
+                                .addGap(60, 60, 60)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
+                                .addGap(38, 38, 38)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jToggleButton1))
-                        .addContainerGap(72, Short.MAX_VALUE))))
+                        .addContainerGap(64, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
