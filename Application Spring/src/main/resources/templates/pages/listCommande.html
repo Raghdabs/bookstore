@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<section layout:fragment="content">
+<h2 align="center">List of Orders</h2>
+    <div class="container my-2">
+        <div class="card">
+            <div class="card-body">
+                <div th:switch="${commandes}" class="container my-5">
+                    <div class="col-md-10">
+                        <h2 th:case="null">No Orders yet!</h2>
+                        <div th:case="*">
+                            <table class="table table-striped table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th>Client Fullname</th>
+                                        <th>Price</th>
+                                        <th>Book</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="commande : ${commandes}">
+                                        <td th:text="${commande.fullname}"></td>
+                                        <td th:text="${commande.price}"></td>
+                                        <td th:text="${commande.book.title}"></td>
+                                        <td><a th:href="@{/commande/editt/{id}(id=${commande.id})}" class="btn btn-warning"><i class="menu-icon mdi mdi-settings"></i></a></td>
+                                        <td><a th:href="@{/article/deletee/{id}(id=${commande.id})}" class="btn btn-danger"><i class="menu-icon mdi mdi-delete-forever"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ </section> 
+ 
+</body>
+</html>
