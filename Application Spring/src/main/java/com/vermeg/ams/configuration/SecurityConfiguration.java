@@ -50,8 +50,8 @@ WebSecurityConfigurerAdapter {
  //.antMatchers("/provider/**").hasAuthority("ADMIN")
 
 //.antMatchers("/article/**").hasAuthority("USER").anyRequest()
-.antMatchers("/pages/dashboard**").hasAnyAuthority("ADMIN", "SUPERADMIN")
-.antMatchers("/pages/dashboard**").hasAnyAuthority("USER","SUPERADMIN").anyRequest()
+//.antMatchers("/pages/dashboard**").hasAnyAuthority("ADMIN", "SUPERADMIN")
+.antMatchers("/pages/dashboard**").hasAnyAuthority("ADMIN","USER","SUPERADMIN").anyRequest()
 .authenticated().and().csrf().disable().formLogin() // l'accès de fait via un formulaire
 
 

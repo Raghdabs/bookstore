@@ -66,11 +66,6 @@ public class addCommandeController {
 	public String addCommande(@Valid Commande commande, BindingResult result,
 			@RequestParam(name = "bookId", required = true) int p) {
 
-		Book book = bookRepository.findById(p)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + p));
-		
-		commande.setBook(book);
-
 		commandeRepository.save(commande);
 		return "redirect:listt";
 
@@ -94,7 +89,7 @@ public class addCommandeController {
 
 		model.addAttribute("commande", commande);
 		model.addAttribute("books", bookRepository.findAll());
-		model.addAttribute("idbook", commande.getBook().getId());
+	
 
 		return "pages/updateCommande";
 	}
@@ -106,10 +101,6 @@ public class addCommandeController {
 			
 			return "pages/updateCommande";
 		}
-
-		Book book = bookRepository.findById(p)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + p));
-		commande.setBook(book);
 
 		commandeRepository.save(commande);
 		return "redirect:list";
