@@ -62,22 +62,7 @@ userService.findUserByEmail(user.getEmail());
  }
  return modelAndView;
  }
- /* @RequestMapping(value="/admin/home", method =
-RequestMethod.GET)
- public ModelAndView home(){
- ModelAndView modelAndView = new ModelAndView();
- Authentication auth =
-SecurityContextHolder.getContext().getAuthentication();
- User user = userService.findUserByEmail(auth.getName());
- modelAndView.addObject("userName", "Welcome " +
-user.getName() + " " + user.getLastName() + " (" + user.getEmail()
-+ ")");
- modelAndView.addObject("adminMessage","Content Available
-Only for Users with Admin Role");
- modelAndView.setViewName("admin/home");
- return modelAndView;
- }*/
-
+ 
  @GetMapping("/403")
  public String error403() {
  return "/error/403";

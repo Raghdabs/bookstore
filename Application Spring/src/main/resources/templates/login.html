@@ -11,35 +11,62 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style>
+.signup {
+	width: 100%;
+	text-align: center;
+	color: #4272d7;
+}
+</style>
 </head>
 <body style="background-image: url('/images/auth/login_1.jpg')">
-<form th:action="@{/registration}" method="get">
-			<button class="btn btn-md btn-warning btn-block" type="Submit">
-				Join Our BookStore</button>
-		</form>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="container">
-		<form th:action="@{/login}" method="POST" class="form-signin">
-			<h2 class="form-signin-heading">SIGN IN</h2>
-			<br /> <input type="text" id="email" name="email"
-				th:placeholder="Email" class="form-control" /> <br /> <input
-				type="password" th:placeholder="Password" id="password"
-				name="password" class="form-control" /> <br />
-
-			<div align="center" th:if="${param.error}">
-				<p style="font-size: 20; color: #FF1C19;">Email or Password
-					invalid, please verify</p>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" name="Submit"
-				value="Login" type="Submit">SIGN IN</button>
-		</form>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+		<form th:action="@{/login}" method="POST"
+					class="login100-form validate-form">
+					<span class="login100-form-title p-b-33"> SIGN IN </span>
+					<div class="wrap-input100 validate-input"
+						data-validate="Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" id="email"
+							placeholder="Email"> <span class="focus-input100-1"></span>
+						<span class="focus-input100-2"></span>
+					</div>
+					<div class="wrap-input100 rs1 validate-input"
+						data-validate="Password is required">
+						<input class="input100" type="password" name="password"
+							id="password" placeholder="Password"> <span
+							class="focus-input100-1"></span> <span class="focus-input100-2"></span>
+					</div>
+					<div align="center" th:if="${param.error}">
+						<p style="font-size: 20; color: #FF1C19;">Email or Password
+							invalid, please verify</p>
+					</div>
+					<div class="container-login100-form-btn m-t-20">
+						<button type="Submit" class="login100-form-btn">Login</button>
+					</div>
+					<br>
+				</form>
+				<form th:action="@{/registration}" method="get">
+					<button class="signup" type="Submit"><b>Sign up</b></button>
+				</form>
 		
 
-
+</div>
+</div>
 
 	</div>
+	 <footer class="footer">
+                <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block" >Copyright © 2018
+              <a  target="_blank">NRM BookStore</a>. All rights reserved.</span>
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block" style="float: right;text-color:white" >Hand-crafted & made with
+              <i class="glyphicon glyphicon-heart text-danger"></i>
+            </span>
+                </div>
+            </footer>
 </body>
 </html>
