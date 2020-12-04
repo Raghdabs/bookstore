@@ -1,64 +1,65 @@
 package com.vermeg.ams.entities;
 
-import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Book {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-
+	private long id;
 	@NotBlank(message = "Title is mandatory")
 	@Column(name = "title")
 	private String title;
-
 	@NotBlank(message = "Author is mandatory")
 	@Column(name = "author")
 	private String author;
-
-	// @NotBlank(message = "Price is mandatory")
+	//@NotBlank(message = "Price is mandatory")
 	@Column(name = "price")
-	private double price;
-
-	@NotBlank(message = "Release Date is mandatory")
-	@Column(name = "releaseDate")
+	private Double price;
+	//@NotBlank(message = "quantity is mandatory")
+	@Column(name = "quantity")
+	private int quantity;
+	//@NotBlank(message = "Date is mandatory")
+	@Column(name = "date")
 	private String releaseDate;
-
-	public Book() {
-
-	}
-
-	@ManyToMany(mappedBy = "books")
-    private Set<Commande> commandes = new HashSet<>();
+	//@NotBlank(message = "Image is mandatory")
+	@Column(name = "picture")
+	private String picture;
 	
-	
-	
-	public Set<Commande> getCommandes() {
-		return commandes;
-	}
 
-	public void setCommandes(Set<Commande> commandes) {
-		this.commandes = commandes;
-	}
-
-	public Book(String title, String author, double price, String releaseDate) {
-
+	public Book(long id, String title, String author, Double price, int quantity, String releaseDate, String picture) {
+		this.id = id;
 		this.title = title;
 		this.author = author;
 		this.price = price;
+		this.quantity = quantity;
 		this.releaseDate = releaseDate;
+		this.picture = picture;
+	
+	}
 
+	public Book() {
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -77,11 +78,11 @@ public class Book {
 		this.author = author;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -93,12 +94,15 @@ public class Book {
 		this.releaseDate = releaseDate;
 	}
 
-	public int getId() {
-		return id;
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
+
+
+
+	
 }
-

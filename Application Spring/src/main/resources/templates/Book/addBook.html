@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<section layout:fragment="content">
+
+
+
+	<div class="container my-5">
+		<h3 class="container my-5">Add book</h3>
+		<div class="card">
+			<div class="card-body">
+				<div class="col-md-10">
+					<form action="#" th:action="@{/book/add}" th:object="${book}" enctype="multipart/form-data"
+						method="post">
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="title" class="col-form-label">Title</label> <input
+									type="text" th:field="*{title}" class="form-control" id="title"
+									placeholder="Title" /> <span
+									th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+									class="text-danger"></span>
+							</div>
+							<div class="form-group col-md-8">
+								<label for="author" class="col-form-label">Author</label> <input
+									type="text" th:field="*{author}" class="form-control"
+									id="author" placeholder="Author" /> <span
+									th:if="${#fields.hasErrors('author')}" th:errors="*{author}"
+									class="text-danger"></span>
+							</div>
+
+							<div class="form-group col-md-8">
+								<label for="price" class="col-form-label">Price</label> <input
+									type="text" th:field="*{price}" class="form-control" id="price"
+									placeholder="Price" /> <span
+									th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+									class="text-danger"></span>
+							</div>
+							<div class="form-group col-md-8">
+								<label for="quantity" class="col-form-label">Quantity</label> <input
+									type="number" th:field="*{quantity}" class="form-control" id="quantity"
+									placeholder="Quantity" /> <span
+									th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"
+									class="text-danger"></span>
+							</div>
+							<div class="form-group col-md-8">
+								<label for="releaseDate" class="col-form-label">Release
+									date</label> <input type="date" th:field="*{releaseDate}"
+									class="form-control" id="releaseDate"
+									placeholder="Release Date" /> <span
+									th:if="${#fields.hasErrors('releaseDate')}"
+									th:errors="*{releaseDate}" class="text-danger"></span>
+							</div>
+							<div class="form-group col-md-8">
+							<label for="price" class="col-formlabel">Picture</label> 
+							<input class="form-control" type="file" name="files" multiple>
+							</div>
+
+						</div>
+						
+						
+						<div class="col-md-6 my-3">
+							<input type="submit" class="btn btn-success" value="Add book" />
+							<a th:href="@{/book/list}" class="btn btn-danger">Cancel</a>
+						</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div hidden sec:authentication="principal.authorities" id="role"></div>
+	<script type="text/javascript">
+			var x = document.getElementById("role").innerText;
+
+
+			
+			if (x =="[USER]")
+				document.getElementById("user").style.display = "contents";
+			else
+				document.getElementById("admin").style.display = "contents";
+		</script>
+		</section>
+</body>
+</html>

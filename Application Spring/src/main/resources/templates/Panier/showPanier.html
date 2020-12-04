@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<section layout:fragment="content">
+
+	<h2 align="center" style="padding-top: 100px;">List of books</h2>
+	<div class="container my-2">
+		<div class="card">
+			<div class="card-body">
+
+
+
+
+
+
+				<div class="col">
+
+					<h2 th:if="${books.isEmpty()}">No books yet!</h2>
+
+					<div th:unless="${books.isEmpty()}">
+						<table class="table table-striped table-responsive-md">
+							<thead>
+								<tr style="text-align: center;">
+									<th>Image</th>
+									<th>Title</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Update</th>
+									<th>Remove</th>
+
+
+
+
+
+								</tr>
+							</thead>
+
+							<tbody style="text-align: center;">
+
+								<tr th:each="l :${books}">
+									<td><img alt="Image" th:src="@{'/uploads/'+${l.key.picture}}" width="50" height="50" /></td>
+									<td th:text="${l.key.title}"></td>
+									<td th:text="${l.key.price}"></td>
+									<td th:text="${l.value}"></td>
+									<td>
+										<form th:action="@{../panier/updateQuantity}" method="post">
+										
+											<input type="hidden" name="id" th:value="${l.key.id}"th:attr="name='id'" /> 
+												<input type="number" min="1"name="quantity" th:max="${l.key.quantity}"th:value="${l.value}" /> 
+												<br/><br>
+												<button type="submit" class="btn btn-warning " ><i class="mdi mdi-wrench"></i>Update quantity</button>
+												
+
+										</form>
+
+									</td>
+									<td><a th:href="@{/panier/delete/{id} (id=${l.key.id})}"
+										class="btn btn-danger" style="float: right;"><i class="mdi mdi-delete-forever"></i>Remove</a></td>
+
+									<!--  <div th:unless="${book.quantity>=1}">
+											<td class="alert alert-danger pt-4"> Out Of Stock </td>
+										</div>
+										-->
+
+								</tr>
+
+							</tbody>
+						</table>
+						<br>
+						<form action="#" th:action="@{../lignecommand/add}">
+
+							<input hidden  type="text" id="in" name="email"/>
+							<button type="submit" class="btn btn-success" value="Make Order" style="float: right;" ><i class="mdi mdi-square-inc-cash"></i>Make Order</button>
+						</form>
+						
+						<div hidden  sec:authentication="name" id="email"></div>
+						<script type="text/javascript">
+							var x = document.getElementById("email").innerText;
+							document.getElementById("in").value = x;
+							
+							
+						</script>
+					</div>
+				</div>
+
+			</div>
+			<div hidden sec:authentication="principal.authorities" id="role"></div>
+				<script type="text/javascript">
+		var x = document.getElementById("role").innerText;
+
+		if (x == "[USER]")
+			document.getElementById("user").style.display = "contents";
+		else
+			document.getElementById("admin").style.display = "contents";
+	</script>
+
+		</div>
+	</div>
+	
+</section>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<section layout:fragment="content">
+
+	
+	<h2 align="center" class="my-5">List of Orders</h2>
+	<div class="container my-2" id="listCommandAdmin"  style="visibility:hidden;position: absolute;">
+		<div class="card">
+			<div class="card-body">
+				<div th:switch="${commands}" class="container my-5">
+					<p class="my-5">
+					<!-- per role -->
+						<a  th:href="@{'/command/listBooks'}" class="btn btn-dark"><i class="menu-icon mdi mdi-plus-circle"></i>Add Order</a>
+					</p>
+					<div class="col">
+						<h2 th:case="null">No commands yet!</h2>
+						<div th:case="*">
+							<table class="table table-striped table-responsive-md">
+								<thead>
+									<tr style="text-align:center;">
+										<th>Id</th>
+										<th>Date</th>
+										<th>Price</th>
+										<th>User Name</th>
+									
+										<th>Details</th>
+									</tr>
+								</thead>
+								<tbody style="text-align:center;">
+									<tr th:each="command : ${commands}">
+										<td th:text="${command.id}"></td>
+										<td th:text="${command.date}"></td>
+										<td th:text="${command.totalPrice}"></td>
+										<td th:text="${command.user.name}"></td>
+										
+										<td><a th:href=@{/command/show/{id}(id=${command.id})}  class="btn btn-primary"><i class="mdi mdi-file-find"></i>Show Details</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	<div class="container my-2" id="listCommandUser" style="visibility:hidden;position: absolute;" >
+		<div class="card">
+			<div class="card-body">
+				<div th:switch="${commandsUser}" class="container my-5">
+					<p class="my-5">
+					<!-- per role -->
+						<a  th:href="@{'/command/listBooks'}" class="btn btn-dark"><i class="menu-icon mdi mdi-plus-circle"></i> Add New Order</a>
+					</p>
+					<div class="col">
+						<h2 th:case="null">No commands yet!</h2>
+						<div th:case="*">
+							<table class="table table-striped table-responsive-md">
+								<thead>
+									<tr style="text-align:center;">
+										<th>Id</th>
+										<th>Date</th>
+										<th>Price</th>
+									
+									
+										<th>Details</th>
+									</tr>
+								</thead>
+								<tbody style="text-align:center;">
+									<tr th:each="command : ${commandsUser}">
+										<td th:text="${command.id}"></td>
+										<td th:text="${command.date}"></td>
+										<td th:text="${command.totalPrice}"></td>
+										
+										
+										<td><a th:href=@{/command/show/{id}(id=${command.id})}  class="btn btn-primary"><i class="mdi mdi-file-find"></i>Show Details</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div hidden sec:authentication="principal.authorities" id="role"></div>
+	<script type="text/javascript">
+			var x = document.getElementById("role").innerText;
+
+
+			
+			if (x =="[USER]")
+				{
+			     document.getElementById("listCommandUser").style.visibility = "visible";}
+			else
+				{
+			document.getElementById("listCommandAdmin").style.visibility = "visible";}
+		</script>
+		</section>
+</body>
+</html>
