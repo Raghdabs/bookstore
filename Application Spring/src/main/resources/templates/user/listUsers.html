@@ -22,7 +22,6 @@
 									<tr>
 										
 										<th>Name</th>
-										<th>Email</th>
 										<th>Role</th>
 										<th>Update Role</th>
 										<th>is Active</th>
@@ -34,7 +33,6 @@
 									<tr th:each="user : ${users}">
 										
 										<td th:text="${user.name}"></td>
-										<td th:text="${user.email}"></td>
 										<td th:text="${user.roles[0].role}"></td>
 										<td>
 										<form method="post" th:action="@{/accounts/updateRole}">
