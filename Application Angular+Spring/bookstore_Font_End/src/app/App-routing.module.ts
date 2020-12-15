@@ -7,9 +7,9 @@ import { UpdateBookComponent } from './update-book/update-book.component';
 
 const routes: Routes = [
    { path: "", pathMatch: "full", redirectTo: "app-navbar" },
-   { path: "listProvider", component: ListBookComponent },
-   { path: "addProvider", component: AddBookComponent },
-   { path: "updateProvider/:id", component: UpdateBookComponent },
+   { path: "listBook", component: ListBookComponent },
+   { path: "addBook", component: AddBookComponent },
+   { path: "updateBook/:id", component: UpdateBookComponent },
   
 ];
 

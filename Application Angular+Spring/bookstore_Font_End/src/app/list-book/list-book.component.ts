@@ -8,32 +8,32 @@ import { Router } from '@angular/router';
 })
 export class ListBookComponent implements OnInit {
 
-  providers: any;
+  books: any;
   constructor(private service: BookService, private router: Router) { }
   ngOnInit() {
   this.service.listBooks().subscribe(
   response => {
-  this.providers = response;
+  this.books = response;
   }
   );
   }
  
-  deleteProvider(myObj) {
+  deleteBook(myObj) {
    //console.log(this.provider);
-   this.service.deleteProvider(myObj).subscribe(response => {
+   this.service.deleteBook(myObj).subscribe(response => {
    console.log(response);
-   this.refreshListProviders();
+   this.refreshListBooks();
    })
    }
-   refreshListProviders() {
-   this.service.listProviders().subscribe(
+   refreshListBooks() {
+   this.service.listBooks().subscribe(
    response => {
-   this.providers = response;
+   this.books = response;
    }
    );
    }
-   updateProvider(myObj) {
-   this.router.navigate(['updateProvider' + '/' + myObj['id']]);
+   updateBook(myObj) {
+   this.router.navigate(['updateBook' + '/' + myObj['id']]);
    }
 
 }
