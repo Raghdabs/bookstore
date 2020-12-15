@@ -12,12 +12,12 @@ import localeES from "@angular/common/locales/es";
 })
 export class UpdateBookComponent implements OnInit {
 
-   private id :any;
-   private bookToUpdate:any;
-   private title:any;
-   private author:any;
-   private price:any;
-   private releasedate :any;
+    id :any;
+    bookToUpdate:any;
+    title:any;
+    author:any;
+    price:any;
+    releasedate :any;
   
   constructor(private service: BookService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
