@@ -11,6 +11,8 @@ export class BookService {
 
   urlBooks = 'http://127.0.0.1:3000/books';
   book: any;
+  username = sessionStorage.getItem('username');
+ password = sessionStorage.getItem('password');
   constructor(private Http: HttpClient) { }
   listBooks() {
     return this.Http.get(this.urlBooks + '/list');

@@ -19,7 +19,8 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { UpdateBookComponent } from './book/update-book/update-book.component';
 import { ListBookComponent } from './book/list-book/list-book.component';
 import {AddBookComponent} from './book/add-book/add-book.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BasicAuthHtppInterceptorService } from './basic-auth-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,15 @@ import { HttpClientModule } from '@angular/common/http';
     ChartsModule,
     HttpClientModule,
   ],
-  providers: [ThemeService],
+  
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: BasicAuthHtppInterceptorService,
+    multi: true
+    }
+    ],
+   
   bootstrap: [AppComponent]
 })
 export class AppModule { }

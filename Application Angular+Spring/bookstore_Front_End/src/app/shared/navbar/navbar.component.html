@@ -1,4 +1,4 @@
-<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"*ngIf="loginService.isUserLoggedIn()" >
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
     <a class="navbar-brand brand-logo" routerLink="/"><img src="assets/images/logo.svg" alt="logo" /></a>
     <a class="navbar-brand brand-logo-mini" routerLink="/"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -34,7 +34,7 @@
             Activity Log
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="javascript:;">
+          <a class="dropdown-item" routerLink="user-pages/logout">
             <i class="mdi mdi-logout mr-2 text-primary"></i>
             Signout
           </a>
@@ -141,7 +141,7 @@
         </div>
       </li>
       <li class="nav-item nav-logout d-none d-lg-block">
-        <a class="nav-link" href="javascript:;">
+        <a class="nav-link" routerLink="user-pages/logout"  routerLinkActive="active">
           <i class="mdi mdi-power"></i>
         </a>
       </li>
